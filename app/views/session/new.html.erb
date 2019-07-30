@@ -1,0 +1,14 @@
+<head>
+<title>ログイン</title>
+</head>
+
+
+<body>
+  <%= form_with scope: :session, local: true do |f| %>
+    <%= f.label :name, '名前'%>
+    <%= f.text_field :name, class: 'form-control'%>
+    <%= f.label :password, 'パスワード'%>
+    <%= f.password_field :password, class: 'form-control'%>
+    <%= f.submit 'ﾛｸﾞｲﾝ', class: 'btn btn-info' %>
+  <%end%>
+</body>
