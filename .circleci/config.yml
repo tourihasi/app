@@ -12,12 +12,12 @@ jobs:
         environment:
           MYSQL_ALLOW_EMPTY_PASSWORD: true
           MYSQL_ROOT_PASSWORD: ''
-          MYSQL_DATABASE: test_db
+          MYSQL_DATABASE: development_db
     working_directory: ~/repo
     steps:
       - checkout
       - run:
-          name: bundle のｾｯﾄｱｯﾌﾟ
+          name: bundle のｾｯﾄｱｯﾌﾟ bundler2系に対応
           command: |
             sudo gem update --system
             sudo gem uninstall bundler
