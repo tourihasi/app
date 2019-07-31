@@ -8,5 +8,9 @@ Rails.application.routes.draw do
   get '/login', to: 'session#new'
   post '/login', to: 'session#create'
   delete '/logout', to: 'session#destroy'
+
+  #google認証
+  get 'auth/:provider/callback', to: 'session#create_g'
+  get 'auth/failure', to: redirect('/')
   
 end

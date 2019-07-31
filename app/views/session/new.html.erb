@@ -11,4 +11,6 @@
     <%= f.password_field :password, class: 'form-control'%>
     <%= f.submit 'ﾛｸﾞｲﾝ', class: 'btn btn-info' %>
   <%end%>
+
+    <%= link_to "googleアカウントでﾛｸﾞｲﾝ", "/auth/google_oauth2", id: "sign_in", method: :post %>
 </body>
