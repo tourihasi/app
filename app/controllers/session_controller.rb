@@ -5,6 +5,7 @@ class SessionController < ApplicationController
   end
 
   def create
+    user = nil
     user = User.find_by(name: session_params[:name])
 
     if user&.authenticate(session_params[:password]) #authenticate = 暗号化されてないパスワードとpassword_digest属性値の一致を検証
@@ -12,6 +13,18 @@ class SessionController < ApplicationController
       redirect_to root_path
     else
       render :new
+    end
+  end
+
+  # google認証
+  def create_g
+    user = User.from_omniauth(request.env["omniauth.auth"])
+    # binding.pry
+    if user.save
+      session[:user_id] = user.id
+      redirect_to root_path
+    else
+      redirect_to root_path
     end
   end
 
