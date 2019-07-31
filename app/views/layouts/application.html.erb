@@ -13,6 +13,7 @@
     <%if @current_user then%>
       <%= link_to 'ﾕｰｻﾞ一覧', users_path %>
       <%= link_to 'ﾕｰｻﾞ登録', new_user_path %>
+      <%= link_to 'ログアウト', logout_path, method: :delete %>
     <%end%>
     <%= yield %>
   </body>
