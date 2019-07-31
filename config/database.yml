@@ -11,11 +11,7 @@ default: &default
   timeout: 5000
   username: <%= ENV['DATEBASE_USER_NAME'] %>
   password: <%= ENV['DATEBASE_USER_PASS'] %>
-<<<<<<< HEAD
   host: 127.0.0.1
-=======
-  host: localhost
->>>>>>> omniauth
 
 development:
   <<: *default
