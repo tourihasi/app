@@ -12,5 +12,10 @@ Rails.application.routes.draw do
   #google認証
   get 'auth/:provider/callback', to: 'session#create_g'
   get 'auth/failure', to: redirect('/')
+
+  #多対多のアソシエーション
+  resources :messages do
+    resource :comments, onry: [:create,:destroy,:new]
+  end
   
 end

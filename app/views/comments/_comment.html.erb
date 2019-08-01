@@ -1,0 +1,10 @@
+<tr>
+  <td>
+    <%= "#{comment.id}: " %><%= comment.user_name %>
+    <%='コメント日:' %></span><%= comment.created_at.strftime("%Y/%m/%d %H:%M") %>
+    <%= simple_format(comment.content) %>
+    <% if current_user.id == comment.user.id %>
+      <%= link_to '削除',message_comments_path(:message_id => comment.message.id, :id => comment.id) ,method: :delete, remote: true, class: 'delete_comment'%>
+    <%end%>
+  </td>
+</tr>

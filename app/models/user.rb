@@ -35,5 +35,10 @@ class User < ApplicationRecord
 
   end
 
+  has_many :messages
+  has_many :comments
+  #commentsを通してmessagesからたくさんのcomments_messagesを持っている
+  has_many :comments_messages, through: :comments, source: :message
+
 
 end
