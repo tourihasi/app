@@ -4,13 +4,30 @@
 
 
 <body>
-  <%= form_with scope: :session, local: true do |f| %>
-    <%= f.label :name, '名前'%>
-    <%= f.text_field :name, class: 'form-control'%>
-    <%= f.label :password, 'パスワード'%>
-    <%= f.password_field :password, class: 'form-control'%>
-    <%= f.submit 'ﾛｸﾞｲﾝ', class: 'btn btn-info' %>
-  <%end%>
-
-    <%= link_to "googleアカウントでﾛｸﾞｲﾝ", "/auth/google_oauth2", id: "sign_in", method: :post %>
+<div class="form-wrapper">
+  <center>
+  <fieldset>
+    <h1>Sign In/サインイン</h1>
+    <form>
+      <%= form_with scope: :session, local: true do |f| %>
+      <div class="form-item">
+        <%= f.text_field :name, class: 'form-control',placeholder: "あなたのお名前"%>
+      </div>
+      <div class="form-item">
+        <%= f.password_field :password, class: 'form-control',placeholder: "あなたのﾊﾟｽﾜｰﾄﾞ"%>
+      </div>
+      <div class="button-panel">
+        <%= f.submit 'サインイン', class: 'btn' %>
+      </div>
+      <%end%>
+    </form>
+  
+    <button id="google-login", class="btn-default"><%= link_to "googleアカウントでﾛｸﾞｲﾝ", "/auth/google_oauth2", id: "sign_in", method: :post %></button>
+  <div class="form-footer">
+    <p><a href="#"><%= link_to '新規登録', new_user_path %></a></p>
+    <p><a href="#">パスワードを忘れた場合</a></p>
+  </div>
+  </fieldset>
+  </center>
+</div>
 </body>

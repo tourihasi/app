@@ -101,3 +101,6 @@ gem 'bcrypt', '~> 3.1.7'
 
 #pry使用できるようにするため
 gem 'pry-rails'
+
+#ompassでCSSコーディング時間短縮
+gem "compass-rails"
