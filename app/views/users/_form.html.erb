@@ -1,0 +1,27 @@
+<head>
+<title>新規ﾕｰｻﾞｰ作成</title>
+</head>
+
+
+<body>
+  <!--- ﾊﾞﾘﾃﾞｰｼｮﾝ ｴﾗｰﾒｯｾｰｼﾞ表示 --->
+  <% if @user.errors.present? %>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <%end%>
+  <%end%>
+
+  <%= form_with model: @user, local: true do |f| %>
+    <%= f.label :name, '名前' %>
+    <%= f.text_field :name, class: 'form_control'%>
+    <%= f.label :email, 'メールｱﾄﾞﾚｽ' %>
+    <%= f.text_field :email, class: 'form_control' %>
+    <%= f.label :password, 'パスワード' %>
+    <%= f.password_field :password, class: 'form_control' %>
+    <%= f.label :password_confirmation, 'パスワード(確認用)' %>
+    <%= f.password_field :password_confirmation, class: 'form_control' %>
+    <%= f.label :admin, '管理者権限付与' %>
+    <%= f.check_box :admin, class: 'form_control',id: 'form-check-input' %>
+    <%= f.submit '登録', class: 'btn btn-info btn-lg' %>
+  <%end%>
+</body>

@@ -1,0 +1,29 @@
+<head>
+<title>ユーザー一覧</title>
+</head>
+
+
+<body>
+
+  <table>
+    <thead>
+      <th>名前</th>
+      <th>E-mail</th>
+      <th>登録日</th>
+      <th>管理者権限</th>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= link_to "#{user.name}", user_path(user.id)  %></td>
+        <td><%= user.email %></td>
+        <td><%= user.created_at %></td>
+        <% if user.admin? then%><td>管理者</td>
+        <% else %><td></td><%end%>
+        <td><%= link_to "登録抹消", user_path(user.id), method: :delete %></td>
+        <td><%= link_to "編集", edit_user_path(user.id) %></td>
+      </tr>
+      <%end%>
+    </tbody>
+  </table>
+</body>
