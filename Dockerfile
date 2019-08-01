@@ -6,6 +6,7 @@ RUN apt-get install -y libpq-dev
 RUN apt-get install -y nodejs
 RUN apt-get install -y vim
 RUN apt-get install -y sudo
+#下記がないとRailsアプリに入った時Autoprefixer doesn’t support Node v4.8.2. Update it.(nodeをupdateしろ)とｴﾗｰが発生するため
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
       && apt-get install -y nodejs
 
