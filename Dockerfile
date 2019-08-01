@@ -6,6 +6,8 @@ RUN apt-get install -y libpq-dev
 RUN apt-get install -y nodejs
 RUN apt-get install -y vim
 RUN apt-get install -y sudo
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+      && apt-get install -y nodejs
 
 #作業ﾃﾞｨﾚｸﾄﾘ作成
 RUN mkdir /myapp
