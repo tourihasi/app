@@ -11,7 +11,7 @@ jobs:
       - image: circleci/mysql:5.7
         environment:
           #MYSQL_ALLOW_EMPTY_PASSWORD: true yesで、rootユーザに空のパスワードを設定してコンテナを起動することを許可
-          MYSQL_ROOT_PASSWORD: 'samples'
+          MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: test_db
     working_directory: ~/repo
     steps:
