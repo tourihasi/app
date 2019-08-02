@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if comment.save
         format.html
-        fomat.js
+        format.js
       else
         format.html
         format.js
@@ -27,11 +27,13 @@ class CommentsController < ApplicationController
     @comments = Comment.where(message_id: params[:message_id]).order("created_at DESC")
 
     respond_to do |format|
-      format.html
-      fomat.js
-    else
-      format.html
-      format.js
+      if @comment.save
+        format.html
+        format.js
+      else
+        format.html
+        format.js
+      end
     end
   end
 

@@ -9,17 +9,19 @@
   <%else%>
     <%= @message.title %>
   <%end%>
+      <span>展開者: </span><%= @user.name %>
+      <p><span><%='展開日:' %></span><%= @message.created_at.strftime("%Y/%m/%d %H:%M") %></p>
 
   <!--- 改行とか反映される --->
   <%= simple_format(@message.body)%>
 
   <!--- ｺﾒﾝﾄﾌｫｰﾑ(ajax) --->
   <%= current_user.name %>
-  <%= form_with @comment, url:  message_comments_path(@message) , method: :post, html: { multipart: true}, remote: true do |f| %>
+  <%= form_for @comment, url:  message_comments_path(@message) , method: :post, html: { multipart: true}, remote: true do |f| %>
     <%= f.text_area :content, :size=>"80x6", :maxlength => "5000" %>
     <%= f.hidden_field :message_id, :value => @message.id %>
-    <%= f.hidden_field :host_id, :value => current_host.id %>
-    <%= f.hidden_field :user_name, :value => current_host.name %><br>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :user_name, :value => current_user.name %><br>
     <%= f.submit 'コメント' %>
   <%end%>
 
