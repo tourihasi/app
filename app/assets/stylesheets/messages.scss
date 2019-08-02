@@ -1,3 +1,81 @@
-// Place all the styles related to the messages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+//ﾒｯｾｰｼﾞﾌｫｰﾑ装飾
+.container{  
+    h1{
+      color: rgb(0, 0, 0);
+      text-transform: uppercase;
+      font-size: 50px;
+    }
+  }
+
+.nice-wrap{
+    position: relative;
+    height: 100px;
+   
+    margin: 0;
+}
+
+.nice-label{
+    position: absolute;
+    top: 5px;
+    left: 2px;
+    font-size: 16px;
+    color: #fa5b5b;
+    transition: all 0.25s ease;
+    z-index: 10;
+    
+    &.focus{
+      top: -25px;
+      left: 5px;
+      font-size: 14px;
+      color: rgb(252, 27, 27);
+    }
+  }
+  
+  .nice-textbox{
+    position: relative;
+    display: block;
+    margin-top: 50px;
+    padding: 15px;
+    border-color: #000000;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #000000;
+    border-width: 0.1ex;
+  }
+
+//タイトル装飾
+.nice-wrap_title{
+    position: relative;
+    height: 30px;
+   
+    margin: 0;
+}
+
+.nice-label_title{
+    position: absolute;
+    top: 5px;
+    left: 2px;
+    font-size: 16px;
+    color: #fa5b5b;
+    transition: all 0.25s ease;
+    z-index: 10;
+    
+    &.focus{
+      top: -25px;
+      left: 5px;
+      font-size: 14px;
+      color: rgb(252, 27, 27);
+    }
+  }
+  
+  .nice-textbox_title{
+    position: relative;
+    display: block;
+    margin-top: 100px;
+    padding: 15px;
+    border-color: #000000;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #000000;
+    border-width: 0.1ex;
+  }

@@ -8,8 +8,7 @@
   <center>
   <fieldset>
     <h1>Sign In/サインイン</h1>
-    <form method="post">
-      <%= form_with scope: :session, method: :post, local: true do |f| %>
+      <%= form_with scope: :session, class: 'form', local: true do |f| %>
       <div class="form-item">
         <%= f.text_field :name, class: 'form-control',placeholder: "あなたのお名前"%>
       </div>
@@ -20,7 +19,6 @@
         <%= f.submit 'サインイン', class: 'btn' %>
       </div>
       <%end%>
-    </form>
   
     <button id="google-login", class="btn-default"><%= link_to "googleアカウントでﾛｸﾞｲﾝ", "/auth/google_oauth2", id: "sign_in", method: :post %></button>
   <div class="form-footer">

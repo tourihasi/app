@@ -10,6 +10,7 @@
   </head>
 
   <body>
+  <!--- div class='main_image' --->
   <%if @current_user then%>
   <center>
   <div class="cp_navi">
@@ -122,5 +123,11 @@
 }
 .cp_navi > ul > li > div ul > li:hover > a {
 	background-color: rgba( 255, 255, 255, 0.1);
+}
+
+/*背景画像*/
+.main_image{                                                        /*1.app/asset/imagesに画像ﾃﾞｰﾀ入っている*/
+  background-image: url("<%= asset_url("papyrus-dark.png") %>");    /*2.class main_imageに画像を表示       */
+  background-size:cover;                                            /*画面一杯に表示する */
 }
 </style>

@@ -7,6 +7,7 @@
   <%= link_to  "戻る", messages_path, class: 'btn btn-info btn-sm' %>
 
   <!--- ﾍﾟｰｼﾞ前後送り --->
+<div class="float-left">
   <% if @message.previous.present? %>
     <%= link_to message_path(@message.previous) do %>
       <% if @message.previous.title.present? %>
@@ -16,7 +17,8 @@
       <%end%>      
     <%end%>
   <%end%>
-
+</div>
+<div class="float-right">
   <% if @message.next.present? %>
     <%= link_to message_path(@message.next) do %>
       <% if @message.next.title.present? %>
@@ -26,9 +28,11 @@
       <%end%>
     <%end%>
   <%end%>
+</div>
 
 
   <!--- ﾒｯｾｰｼﾞ --->
+<div class='message'>  
   <% if @message.title == "" %>
     <%= 'ﾀｲﾄﾙなし' %>
   <%else%>
@@ -49,9 +53,13 @@
       <%= image.filename %>
     <% end %>
   <% end %>
+<div>
+
+<br>
 
   <!--- ｺﾒﾝﾄﾌｫｰﾑ(ajax) --->
-  <%= current_user.name %>
+<div class='comment_form'>
+  <p>コメント:<%= current_user.name %></p>
   <%= form_for @comment, url:  message_comments_path(@message) , method: :post, html: { multipart: true}, remote: true do |f| %>
     <%= f.text_area :content, :size=>"80x6", :maxlength => "5000" %>
     <%= f.file_field :images, multiple: true,id: "file",class: 'image',:size=>"60"%>
@@ -60,6 +68,7 @@
     <%= f.hidden_field :user_name, :value => current_user.name %>
     <%= f.submit 'コメント' %>
   <%end%>
+</div>
 
   <!--- ｺﾒﾝﾄ一覧(ajax) --->
   <table class ="table", id = "comments">

@@ -48,8 +48,8 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
     @message.destroy
 
-    redirect_to messages_path
-    #head :no_content
+    head :no_content
+    #message.jsにAJAX処理記載しています
     # headメソッドを用いて、ﾚｽﾎﾟﾝｽﾎﾞﾃﾞｨなしで、HTTPｽﾃｰﾀｽ204(成功)が返るようにしておく
     # なくても動作するが、分かりやすさの為記述
   end

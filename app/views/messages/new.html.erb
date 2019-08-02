@@ -4,13 +4,23 @@
 
 
 <body>
+<div class="container">
   <%= form_for @message do |f| %>
-    <%= f.label :title, '標題' %>
-    <%= f.text_field :title, :size=>"60"%>
-    <%= f.label :body, '内容'%>
-    <%= f.text_area :body, :size =>'80x15', :maxlength => "5000"%>
-    <%= f.label :images,"添付" %>
-    <%= f.file_field :images, multiple: true %>
-    <%= f.submit '展開'%>
+    <div class = "nice-wrap_title">
+      <%= f.label :title, '【タイトル】',class: "nice-label_title"%>
+      <%= f.text_field :title, :size=>"60",class: "nice-textbox_title"%>
+    </div>
+    <div>
+    <div class = "nice-wrap">
+      <%= f.label :body, '【メッセージ】',class: "nice-label"%>
+      <%= f.text_area :body, :size =>'85x15', :maxlength => "5000",class: "nice-textbox"%>
+    </div><br><br><br><br><br><br><br><br><br>
+    <div>
+      <%= f.label :images,"添付" %>
+      <%= f.file_field :images, multiple: true %>
+      <p><span id='count'></span>/5000文字まで</p>
+      <%= f.submit '展開'%>
+    </div>
   <%end%>
+</div>
 </body>
