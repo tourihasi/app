@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to message_path(@message.id)
     else
-      rener :new
+      render :new
     end
   end
 
@@ -41,8 +41,18 @@ class MessagesController < ApplicationController
     end
   end
 
-  private
+  def destroy
+    @message = Message.find(params[:id])
+    @message.destroy
+
+    redirect_to messages_path
+    #head :no_content
+    # headメソッドを用いて、ﾚｽﾎﾟﾝｽﾎﾞﾃﾞｨなしで、HTTPｽﾃｰﾀｽ204(成功)が返るようにしておく
+    # なくても動作するが、分かりやすさの為記述
+  end
+
+  private #images: [] => ﾌｧｲﾙ複数収納
   def message_params
-    params.require(:message).permit(:title,:body)
+    params.require(:message).permit(:title,:body,images: [])
   end
 end

@@ -32,7 +32,7 @@
         <td><%= message.created_at.strftime('%Y/%m/%d') %></td>
         <!--- ﾛｸﾞｲﾝ中のhostのidとﾒｯｾｰｼﾞのidが一緒なら削除ﾘﾝｸ --->
         <!--- ajax処理追加  remoteとjavascriptで要素取得するために、class delete(任意の名前) --->
-        <% if message.host.id == current_host.id %>
+        <% if message.user.id == current_user.id %>
           <td><%=link_to '削除', message_path(message.id) ,method: :delete, remote: true, class: 'delete' %></td>
         <%else%>
           <td></td>

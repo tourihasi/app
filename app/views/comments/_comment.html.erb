@@ -1,8 +1,23 @@
 <tr>
   <td>
+    <!--- ｺﾒﾝﾄ --->
     <%= "#{comment.id}: " %><%= comment.user_name %>
     <%='コメント日:' %></span><%= comment.created_at.strftime("%Y/%m/%d %H:%M") %>
     <%= simple_format(comment.content) %>
+    <!--- 添付ﾌｧｲﾙ表示 --->
+    <% if comment.images.attached? %>
+      <% comment.images.each do |image| %>
+        <% if image.filename.to_s =~ /\.jpeg$|\.jpg$|\.gif$|\.png$|\.bmp$/ %>
+          <%=link_to image_tag(image , height: '20'), (rails_blob_path(image, disposition: "attachment"))%>
+        <% elsif image.filename.to_s  =~ /\.mp4$|\.wmv$|\.avi$|\.mov$/  %>
+          <%=link_to image_tag(image.preview(resize: "50x50>")), (rails_blob_path(image, disposition: "attachment")) %>
+        <%else%>
+          <%=link_to image_tag("file_icon.png", height: '20'), (rails_blob_path(image, disposition: "attachment")) %>
+        <%end%>
+        <%= image.filename %>
+      <%end%>
+    <%end%>
+    
     <% if current_user.id == comment.user.id %>
       <%= link_to '削除',message_comments_path(:message_id => comment.message.id, :id => comment.id) ,method: :delete, remote: true, class: 'delete_comment'%>
     <%end%>
