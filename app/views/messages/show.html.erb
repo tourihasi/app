@@ -4,8 +4,30 @@
 
 
 <body>
-<%= link_to  "戻る", messages_path, class: 'btn btn-info btn-sm' %>
-  
+  <%= link_to  "戻る", messages_path, class: 'btn btn-info btn-sm' %>
+
+  <!--- ﾍﾟｰｼﾞ前後送り --->
+  <% if @message.previous.present? %>
+    <%= link_to message_path(@message.previous) do %>
+      <% if @message.previous.title.present? %>
+        << <%= @message.previous.title %>
+      <% else %>
+        <%= '<< 前へ' %>
+      <%end%>      
+    <%end%>
+  <%end%>
+
+  <% if @message.next.present? %>
+    <%= link_to message_path(@message.next) do %>
+      <% if @message.next.title.present? %>
+        <%= @message.next.title %> >>
+      <% else %>
+        <%= '次へ >>' %>
+      <%end%>
+    <%end%>
+  <%end%>
+
+
   <!--- ﾒｯｾｰｼﾞ --->
   <% if @message.title == "" %>
     <%= 'ﾀｲﾄﾙなし' %>
