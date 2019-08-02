@@ -24,7 +24,10 @@ class MessagesController < ApplicationController
   end
 
   def index
-    @messages = Message.all
+    #ranssackで検索
+    @search_messages = Message.ransack(params[:q])
+    #kaminariでﾍﾟｰｼﾞﾈｰｼｮﾝ
+    @messages = @search_messages.result(distinct: true).page(params[:page]).per(10)
   end
 
   def edit
