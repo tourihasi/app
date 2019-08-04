@@ -13,6 +13,8 @@ default: &default
 development:
   <<: *default
   database: development_db
+  username: <%= ENV['DATEBASE_USER_NAME']%>
+  password: <%= ENV['DATEBASE_USER_PASS']%>
   host: localhost
 
 # Warning: The database defined as "test" will be erased and

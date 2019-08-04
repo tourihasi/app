@@ -12,7 +12,7 @@
   <body>
   <!--- div class='main_image' --->
   <%if @current_user then%>
-  <center>
+	<nav>
   <div class="cp_navi">
     <ul>
       <li><%= link_to 'Home', root_path %></li>
@@ -29,20 +29,240 @@
         <li><%= link_to 'サインアウト', logout_path, method: :delete %></li>
     </ul>
   </div>
-  </center>
   <%end%>
-    <%= yield %>
+
+	<!--- トグルメーニュー --->
+	<button class ='togle_btn'><%= image_tag "button.png",:size => '30x40'%></button>
+		<div class = 'togle_nav'>
+		<ul>
+			<li><%= link_to 'Home', root_path %></li>
+				<li>
+					<p class='parent_togle_nav'>ユーザ管理 <span class="caret"></span></p>
+        	<div class = 'child_togle_nav'>
+          <ul>
+            <li><%= link_to '一覧', users_path %></li>
+            <li><%= link_to '登録', new_user_path %></li>
+          </ul>
+				</div>
+        </li>
+			<li><%= link_to 'メッセージ', messages_path %></li>
+			<li><%= link_to 'サインアウト', logout_path, method: :delete %></li>
+		</ul>
+		</div>
+
+	<!--- ドロップダウンメニュー --->
+	<ul id='drop_nav'>
+		<li class='drop_nav_li'><a>メニュー</a>
+			<ul  class="dropdwn_menu">
+				<li><%= link_to 'Home', root_path %></li>
+					<li>
+						<p class='parent_togle_nav'>ユーザ管理</a><span class="caret"></span></p>
+        		<div class = 'child_togle_nav'>
+          	<ul>
+            	<li><%= link_to '一覧', users_path %></li>
+            	<li><%= link_to '登録', new_user_path %></li>
+          	</ul>
+						</div>
+      		</li>
+				<li><%= link_to 'メッセージ', messages_path %></li>
+				<li><%= link_to 'サインアウト', logout_path, method: :delete %></li>
+			</ul>
+		</li>
+	</ul>
+
+	</nav>
+
+	<!--- フローティングメニュー --->
+	<nav class='floating_nav'>
+	<p class='floating_menue'>メニュー</p>
+	<ul class='floating'>
+		<li><%= link_to 'Home', root_path %></li>
+		<li>
+			<a class='parent_togle_nav'>ユーザ管理</a>
+			<div class = 'child_togle_nav'>
+        <ul>
+          <li><%= link_to '一覧', users_path %></li>
+          <li><%= link_to '登録', new_user_path %></li>
+        </ul>
+			</div>	
+    </li>
+		<li><%= link_to 'メッセージ', messages_path %></li>
+		<li><%= link_to 'サインアウト', logout_path, method: :delete %></li>
+	</ul>
+	</nav>
+
+	<%= yield %>
   </body>
 </html>
 
 
 <style>
+/*共通ボタン*/
+  .btn {
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: #67c5ff;
+    border: solid 2px #67c5ff;
+    border-radius: 3px;
+    transition: .4s;
+  }
+  
+  .btn:hover {
+    background: #67c5ff;
+    color: white;
+	}
+	
+/*共通ﾃｰﾌﾞﾙ*/
+	table{
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  
+  table th,table td{
+    padding: 10px 0;
+    text-align: center;
+  }
+  
+  table tr:nth-child(odd){
+    background-color: #eee
+	}
+/*共通ﾃｰﾌﾞﾙセルハイライト*/
+.target td, td.target{
+	background:#C15757;
+}
+
+/*フローティングメニュー*/
+.parent_togle_nav{
+	background:#635F5F;
+	color:#FFF;
+}
+
+.floating_menue{
+	display:block;
+	background:#635F5F;
+	padding:20px;
+	width:150px;
+	color:#FFF;
+	text-decoration:none;
+	border-bottom:1px solid #777;
+}
+
+.floating{
+	display:none;
+}
+
+.floating_nav{
+	position:absolute;
+	top:100px;
+	right:0px;
+	font-family:Arial, sans-serif;
+	-webkit-font-smoothing:antialiased;
+	background:#E6E5E5;
+	opacity: 0.5;
+}
+
+.floating > li{
+	list-style-type:none;
+}
+
+.floating  a{
+	display:block;
+	background:#635F5F;
+	padding:20px;
+	width:150px;
+	color:#FFF;
+	text-decoration:none;
+	border-bottom:1px solid #777;
+}
+
+.floating  a{
+	background:#635F5F;
+}
+
+
+.floating  p{
+	padding-bottom:50px;
+	line-height:2em;
+	color:#635F5F;
+}
+
+
+
+/*ドロップダウンメニュー*/
+#drop_nav .dropdwn_menu{
+	display:none;
+	position:absolute;
+	top:65px;
+	right:5px;
+	width:250px;
+}
+
+.drop_nav_li{
+	position:absolute;
+	top:15px;
+	right:60px;
+	width:60px;
+	height:10px;
+	text-align:center;
+	list-style-type:none;
+	font-weight:bold;
+}
+
+.drop_nav_li li{
+	float:none;
+	border-top:1px solid #7F9492;
+}
+
+.drop_nav_li a{
+	display:block;
+	padding:20px 0;
+	color:#FDC825;
+	background:#3F5250;
+	border-right:1px solid #526563;
+	text-decoration:none;
+}
+
+.drop_nav_li a:hover{
+	color:#FFF;
+	background:#394C4A;
+}
+
+
+/*トグルメニュー*/
+.child_togle_nav{
+	display:none;
+}
+
+.togle_nav{
+	position:absolute;
+	top:75px;
+	right:25px;
+	display:none;
+	list-style-type:none;
+	
+	text-decoration:none;
+	font-weight:bold;
+	padding:17px 25px;
+	color:#FFF;
+	background:#B94B6A;
+	border-bottom:1px solid #A24861;
+}
+
+.togle_btn{
+	position:absolute;
+	top:17px;
+	right:25px;
+	background-color:transparent
+	cursor:pointer;
+}
 
 .sign_out{
   text-align: right;
 }
 
-/* https://copypet.jp/671/ */
+/*ナビゲーションバー　　 https://copypet.jp/671/ */
 .cp_navi {
 	background-color: #ffffff;
 	border: 1px solid #dedede;
