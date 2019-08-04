@@ -16,29 +16,13 @@
 //= require turbolinks
 //= require_tree .
 
-/*ﾄｸﾞﾙﾒﾆｭｰ*/
-document.addEventListener('turbolinks:load',function(){
-  $('.togle_btn').click(function(){
-    $('.togle_nav').slideToggle(200);  
-  })
-})
-
-document.addEventListener('turbolinks:load',function(){
-  $('.parent_togle_nav').click(function(){
-    $('.child_togle_nav').slideToggle(200);  
-  })
-})
-
-/*ドロップダウンメニュ  https://tech-dig.jp/dropdownmenu/*/
-document.addEventListener('turbolinks:load',function(){
-  $('#drop_nav li').hover(function(){
-    $("ul:not(:animated)",this).slideDown();
-  },function(){
-    $('ul.dropdwn_menu',this).slideUp();
-  })
-})
-
 /*フローティングメニュー*/
+document.addEventListener('turbolinks:load',function(){
+  $('.parent_floating_nav').click(function(){
+    $('.child_floating_nav').slideToggle(200);  
+  })
+})
+
 document.addEventListener('turbolinks:load',function(){
   $('.floating_nav').hover(function(){
     $('.floating').slideToggle(100);  

@@ -1,14 +1,13 @@
 class SessionController < ApplicationController
   skip_before_action :login_required
 
-  def new
-  end
+  def new; end
 
   def create
-    user = nil
+    # user = nil
     user = User.find_by(name: session_params[:name])
-    #binding.pry
-    if user&.authenticate(session_params[:password]) #authenticate = 暗号化されてないパスワードとpassword_digest属性値の一致を検証
+    # binding.pry
+    if user&.authenticate(session_params[:password]) # authenticate = 暗号化されてないパスワードとpassword_digest属性値の一致を検証
       session[:user_id] = user.id
       redirect_to root_path
     else
@@ -34,6 +33,7 @@ class SessionController < ApplicationController
   end
 
   private
+
   def session_params
     params.require(:session).permit(:name, :password)
   end
