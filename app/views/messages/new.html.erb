@@ -7,8 +7,8 @@
 <div class="container">
   <%= form_for @message do |f| %>
     <div class = "nice-wrap_title">
-      <%= f.label :title, '【タイトル】',class: "nice-label_title"%>
-      <%= f.text_field :title, :size=>"60",class: "nice-textbox_title"%>
+      <%= f.label :title, '【タイトル】',class: "nice-label_title" id: 'title'%>
+      <%= f.text_field :title, :size=>"60",class: "nice-textbox_title", id: 'body'%>
     </div>
     <div>
     <div class = "nice-wrap">
