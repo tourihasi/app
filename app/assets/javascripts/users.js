@@ -23,7 +23,7 @@ document.addEventListener('turbolinks:load',function(){
     }else{
       $('.user_pass_section .alert_user').hide();
     }
-    if(!pass_confirm != pass){
+    if(pass_confirm != pass){
       $('.user_passcon_section .alert_user').show();
       sendflag = false
     }else{
