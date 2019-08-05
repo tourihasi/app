@@ -33,7 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootsnap', '>= 1.4.4', require: false
 
 #bootstrap導入
 gem 'bootstrap', '~> 4.1.1'
@@ -43,10 +43,10 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   
   #rspec導入
-  gem 'webdrivers'
   gem 'rspec-rails'
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
+  #gem 'chromedriver-helper'
 
   #環境変数用gem 
   gem 'dotenv-rails'
@@ -103,3 +103,5 @@ gem 'owlcarousel-rails'
 
 #password_digest
 gem 'bcrypt', '~> 3.1.7'
+
+gem 'webdrivers'

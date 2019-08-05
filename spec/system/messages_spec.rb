@@ -24,4 +24,14 @@ describe 'メッセージ一覧表示', type: :system do #describe テストの�
       # 一覧表示確認 テストタイトルがあることをページに期待する
       expect(page).to have_content 'テストタイトル'
     end
+
+    it 'メッセージ作成' do
+      visit new_message_path
+      fill_in 'title', with: '入力タイトル'
+      fill_in 'body', with: '入力ボディ'
+      click_button '展開'
+      expect(page).to have_content '入力タイトル'
+      expect(page).to have_content '入力ボディ'
+    end
+
 end
