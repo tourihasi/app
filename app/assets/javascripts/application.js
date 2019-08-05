@@ -18,8 +18,14 @@
 
 /*フローティングメニュー*/
 document.addEventListener('turbolinks:load',function(){
-  $('.parent_floating_nav').click(function(){
-    $('.child_floating_nav').slideToggle(200);  
+  $('.parent_floating_nav_user').click(function(){
+    $('.child_floating_nav_user').slideToggle(200);  
+  })
+})
+
+document.addEventListener('turbolinks:load',function(){
+  $('.parent_floating_nav_message').click(function(){
+    $('.child_floating_nav_message').slideToggle(200);  
   })
 })
 
