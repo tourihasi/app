@@ -3,9 +3,9 @@
   <thead class =  "thead-light text-dark">
     <tr>
       <th>No.</th>
-      <th>タイトル</th>
-      <th>投稿者</th>
-      <th>投稿日</th>
+      <th><%= sort_link(@search_messages, :title, 'タイトル') %></th>
+      <th><%= sort_link(@search_messages, :user, '投稿者') %></th>
+      <th><%= sort_link(@search_messages, :created_at, '投稿日') %></th>
       <th>削除</th>
     </tr>
   </thead>

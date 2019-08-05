@@ -13,7 +13,7 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-#カピバラ
+# カピバラ
 require 'capybara/rspec'
 require 'selenium-webdriver'
 

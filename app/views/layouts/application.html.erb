@@ -12,44 +12,51 @@
   <body>
   <!--- div class='main_image' --->
   <%if @current_user then%>
-	<nav>
-  <div class="cp_navi">
-    <ul>
-      <li><%= link_to 'Home', root_path %></li>
-      <li>
-        <a href="#">ユーザ管理 <span class="caret"></span></a>
-        <div>
-          <ul>
-            <li><%= link_to '一覧', users_path %></li>
-            <li><%= link_to '登録', new_user_path %></li>
-          </ul>
-        </div>
-      </li>
-        <li><a href="#"><%= link_to 'メッセージ', messages_path %></a></li>
-        <li><%= link_to 'サインアウト', logout_path, method: :delete %></li>
-    </ul>
-  </div>
-  <%end%>
-
-	<!--- フローティングメニュー --->
-	<nav class='floating_nav'>
-	<p class='floating_menue'>メニュー</p>
-	<ul class='floating'>
-		<li><%= link_to 'Home', root_path %></li>
-		<li>
-			<a class='parent_floating_nav'>ユーザ管理</a>
-			<div class = 'child_floating_nav'>
-        <ul>
-          <li><%= link_to '一覧', users_path %></li>
-          <li><%= link_to '登録', new_user_path %></li>
-        </ul>
-			</div>	
-    </li>
-		<li><%= link_to 'メッセージ', messages_path %></li>
-		<li><%= link_to 'サインアウト', logout_path, method: :delete %></li>
-	</ul>
-	</nav>
-
+		<nav>
+		<div class="cp_navi">
+			<ul>
+				<li><%= link_to 'Home', root_path %></li>
+				<li>
+					<a href="#">ユーザ管理 <span class="caret"></span></a>
+					<div>
+						<ul>
+							<li><%= link_to '一覧', users_path %></li>
+							<li><%= link_to '登録', new_user_path %></li>
+						</ul>
+					</div>
+				</li>
+					<li><a href="#"><%= link_to 'メッセージ', messages_path %></a></li>
+					<li><%= link_to 'サインアウト', logout_path, method: :delete %></li>
+			</ul>
+		</div>
+		<!--- フローティングメニュー --->
+		<nav class='floating_nav'>
+		<p class='floating_menue'>メニュー</p>
+		<ul class='floating'>
+			<li><%= link_to 'Home', root_path %></li>
+			<li>
+				<a class='parent_floating_nav_user'>ユーザ管理</a>
+				<div class = 'child_floating_nav_user'>
+					<ul>
+						<li><%= link_to '一覧', users_path %></li>
+						<li><%= link_to '登録', new_user_path %></li>
+					</ul>
+				</div>	
+			</li>
+			<li>
+				<a class='parent_floating_nav_message'>メッセージ</a>
+				<div class = 'child_floating_nav_message'>
+					<ul>
+						<li><%= link_to 'メッセージ一覧', messages_path %></li>
+						<li><%= link_to 'メッセージ送信', new_message_path %></li>
+					</ul>
+				</div>	
+			</li>
+			<li><%= link_to 'サインアウト', logout_path, method: :delete %></li>
+		</ul>
+		</nav>
+	<%end%>
+	
 	<%= yield %>
   </body>
 </html>
@@ -93,8 +100,11 @@
 }
 
 /*フローティングメニュー*/
+.child_floating_nav_user{
+	display:none;
+}
 
-.child_floating_nav{
+.child_floating_nav_message{
 	display:none;
 }
 
