@@ -14,7 +14,7 @@ gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-gem 'duktape'
+#gem 'duktape'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -33,7 +33,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootsnap', '>= 1.4.4', require: false
 
 #bootstrap導入
 gem 'bootstrap', '~> 4.1.1'
@@ -43,8 +43,10 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   
   #rspec導入
-  gem 'webdrivers'
   gem 'rspec-rails'
+  gem 'capybara', '>= 2.15'
+  gem 'selenium-webdriver'
+  #gem 'chromedriver-helper'
 
   #環境変数用gem 
   gem 'dotenv-rails'
@@ -55,6 +57,12 @@ group :development, :test do
 
   #rubocop導入
   gem 'rubocop', require: false
+
+  #pry使用できるようにするため
+  gem 'pry-rails'
+
+  #ファクトリーボット
+  gem 'factory_bot_rails', '~> 4.11'
 end
 
 group :development do
@@ -64,10 +72,7 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  #gem 'chromedriver-helper' 非対応？でrspec動かないため
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -95,3 +100,8 @@ gem 'jquery-rails'
 
 #1.画像を横スライドさせるgem
 gem 'owlcarousel-rails'
+
+#password_digest
+gem 'bcrypt', '~> 3.1.7'
+
+gem 'webdrivers'

@@ -1,3 +1,23 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  #users_controller ﾙｰﾃｨﾝｸﾞ
+  root to: 'home#new' 
+  #users_controller ﾙｰﾃｨﾝｸﾞ
+  resources :users   
+  
+  get '/login', to: 'session#new'
+  post '/login', to: 'session#create'
+  delete '/logout', to: 'session#destroy'
+
+  #google認証
+  get 'auth/:provider/callback', to: 'session#create_g'
+  get 'auth/failure', to: redirect('/')
+
+  #多対多のｱｿｼｴｰｼｮﾝ
+  resources :messages do
+    resource :comments, onry: [:create,:destroy,:new]
+  end
+
+  get '/messages_sent', to: 'messages#index_sent'
+  
 end

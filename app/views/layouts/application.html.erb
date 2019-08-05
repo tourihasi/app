@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TwitterMerukari</title>
+    <title>ポートフォリオ</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,235 @@
   </head>
 
   <body>
-    <%= yield %>
+  <!--- div class='main_image' --->
+  <%if @current_user then%>
+	<nav>
+  <div class="cp_navi">
+    <ul>
+      <li><%= link_to 'Home', root_path %></li>
+      <li>
+        <a href="#">ユーザ管理 <span class="caret"></span></a>
+        <div>
+          <ul>
+            <li><%= link_to '一覧', users_path %></li>
+            <li><%= link_to '登録', new_user_path %></li>
+          </ul>
+        </div>
+      </li>
+        <li><a href="#"><%= link_to 'メッセージ', messages_path %></a></li>
+        <li><%= link_to 'サインアウト', logout_path, method: :delete %></li>
+    </ul>
+  </div>
+  <%end%>
+
+	<!--- フローティングメニュー --->
+	<nav class='floating_nav'>
+	<p class='floating_menue'>メニュー</p>
+	<ul class='floating'>
+		<li><%= link_to 'Home', root_path %></li>
+		<li>
+			<a class='parent_floating_nav'>ユーザ管理</a>
+			<div class = 'child_floating_nav'>
+        <ul>
+          <li><%= link_to '一覧', users_path %></li>
+          <li><%= link_to '登録', new_user_path %></li>
+        </ul>
+			</div>	
+    </li>
+		<li><%= link_to 'メッセージ', messages_path %></li>
+		<li><%= link_to 'サインアウト', logout_path, method: :delete %></li>
+	</ul>
+	</nav>
+
+	<%= yield %>
   </body>
 </html>
+
+
+<style>
+/*共通ボタン*/
+  .btn {
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: #67c5ff;
+    border: solid 2px #67c5ff;
+    border-radius: 3px;
+    transition: .4s;
+  }
+  
+  .btn:hover {
+    background: #67c5ff;
+    color: white;
+	}
+	
+/*共通ﾃｰﾌﾞﾙ*/
+	.table_common{
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  
+  .table_common th,.table_common td{
+    padding: 10px 0;
+    text-align: center;
+  }
+  
+  .table_common tr:nth-child(odd){
+    background-color: #eee
+	}
+/*共通ﾃｰﾌﾞﾙセルハイライト*/
+.target td, td.target{
+	background:#C15757;
+}
+
+/*フローティングメニュー*/
+
+.child_floating_nav{
+	display:none;
+}
+
+.parent_floating_nav{
+	background:#635F5F;
+	color:#FFF;
+}
+
+.floating_menue{
+	display:block;
+	background:#635F5F;
+	padding:20px;
+	width:150px;
+	color:#FFF;
+	text-decoration:none;
+	border-bottom:1px solid #777;
+}
+
+.floating{
+	display:none;
+}
+
+.floating_nav{
+	position:absolute;
+	top:15px;
+	right:0px;
+	font-family:Arial, sans-serif;
+	-webkit-font-smoothing:antialiased;
+	background:#E6E5E5;
+	opacity: 0.5;
+	z-index: 20;
+}
+
+.floating > li{
+	list-style-type:none;
+}
+
+.floating  a{
+	display:block;
+	background:#635F5F;
+	padding:20px;
+	width:150px;
+	color:#FFF;
+	text-decoration:none;
+	border-bottom:1px solid #777;
+}
+
+.floating  a{
+	background:#635F5F;
+}
+
+
+.floating  p{
+	padding-bottom:50px;
+	line-height:2em;
+	color:#635F5F;
+}
+
+/*ナビゲーションバー　　 https://copypet.jp/671/ */
+.cp_navi {
+	background-color: #ffffff;
+	border: 1px solid #dedede;
+	border-radius: 4px;
+	box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.055);
+	color: #888888;
+	display: block;
+	margin: 1em 1%;
+	overflow: hidden;
+	width: 100%;
+}
+
+.cp_navi ul {
+	margin: 0;
+	padding: 0;
+}
+.cp_navi ul li {
+	display: inline-block;
+	list-style-type: none;
+	-webkit-transition: all 0.2s;
+	        transition: all 0.2s;
+}
+.cp_navi > ul > li > a > .caret {
+	border-top: 4px solid #aaaaaa;
+	border-right: 4px solid transparent;
+	border-left: 4px solid transparent;
+	content: '';
+	display: inline-block;
+	height: 0;
+	width: 0;
+	vertical-align: middle;
+	-webkit-transition: color 0.1s linear;
+	        transition: color 0.1s linear;
+}
+.cp_navi > ul > li > a {
+	color: #aaaaaa;
+	display: block;
+	line-height: 56px;
+	padding: 0 10px;
+	text-decoration: none;
+}
+.cp_navi > ul > li:hover {
+	background-color: rgb(218, 60, 65);
+}
+.cp_navi > ul > li:hover > a {
+	color: rgb( 255, 255, 255 );
+}
+.cp_navi > ul > li:hover > a > .caret {
+	border-top-color: rgb( 255, 255, 255 );
+}
+.cp_navi > ul > li > div {
+	background-color: rgb(218, 60, 65);
+	border-top: 0;
+	border-radius: 0 0 4px 4px;
+	box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.055);
+	display: none;
+	margin: 0;
+	opacity: 0;
+	position: absolute;
+	width: 165px;
+	visibility: hidden;
+	-webkit-transiton: opacity 0.2s;
+	       transition: opacity 0.2s;
+}
+.cp_navi > ul > li:hover > div {
+	display: block;
+	opacity: 1;
+	visibility: visible;
+}
+.cp_navi > ul > li > div ul > li {
+	display: block;
+}
+.cp_navi > ul > li > div ul > li > a {
+	color: #ffffff;
+	display: block;
+	padding: 12px 24px;
+	text-decoration: none;
+}
+.cp_navi > ul > li > div ul > li:hover > a {
+	background-color: rgba( 255, 255, 255, 0.1);
+}
+
+/*背景画像*/
+.main_image{                                                        /*1.app/asset/imagesに画像ﾃﾞｰﾀ入っている*/
+  background-image: url("<%= asset_url("papyrus-dark.png") %>");    /*2.class main_imageに画像を表示       */
+  background-size:cover;                                            /*画面一杯に表示する */
+}
+</style>

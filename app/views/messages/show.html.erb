@@ -1,0 +1,92 @@
+<head>
+<title>ﾒｯｾｰｼﾞ詳細</title>
+</head>
+
+
+<body>
+  
+<p><%= link_to  "戻る", messages_path, class: 'btn btn-info btn-sm' %></p>
+
+  <!--- ﾍﾟｰｼﾞ前後送り --->
+<div class='Back'>
+  <% if @message.previous.present? %>
+    <%= link_to message_path(@message.previous) do %>
+      <% if @message.previous.title.present? %>
+        << <%= @message.previous.title %>
+      <% else %>
+        <%= '<< 前へ' %>
+      <%end%>      
+    <%end%>
+  <%end%>
+</div>
+<div class='forth'>
+  <% if @message.next.present? %>
+    <%= link_to message_path(@message.next) do %>
+      <% if @message.next.title.present? %>
+        <%= @message.next.title %> >>
+      <% else %>
+        <%= '次へ >>' %>
+      <%end%>
+    <%end%>
+  <%end%>
+</div>
+<br>
+
+  <!--- ﾒｯｾｰｼﾞ --->
+<div class='message_show'>
+  <div class='message_title message_head'>
+    <% if @message.title == "" %>
+      <%= 'ﾀｲﾄﾙなし' %>
+    <%else%>
+      <%= @message.title %>
+    <%end%>
+  </div>
+  <div class='message_info message_head'>
+    <p>
+      <%='展開者:' %><%= @user.name %>
+      &nbsp;&nbsp;<%='展開日:' %><%= @message.created_at.strftime("%Y/%m/%d %H:%M") %>
+    </p>
+  </div>
+    <%= simple_format(@message.body, class: 'message_body')%>  <!--- 改行とか反映される --->
+  <div class='message_image'>
+    <%='添付ﾌｧｲﾙ:' %>
+    <% if @message.images.attached? %>
+      <% @message.images.each do |image| %>
+        <% if image.filename.to_s =~ /\.jpeg$|\.jpg$|\.gif$|\.png$|\.bmp$/ %>
+          <%=link_to image_tag(image , height: '20'), (rails_blob_path(image, disposition: "attachment"))%>
+        <% elsif image.filename.to_s  =~ /\.mp4$|\.wmv$|\.avi$|\.mov$/  %>
+          <%=link_to image_tag(image.preview(resize: "100x100>")), (rails_blob_path(image, disposition: "attachment")) %>
+        <%else%>
+          <%=link_to image_tag("file_icon.png", height: '20'), (rails_blob_path(image, disposition: "attachment")) %>
+        <%end%>
+        <%= image.filename %>
+      <% end %>
+    <% end %>
+  </div>
+<div>
+
+<br>
+
+  <!--- ｺﾒﾝﾄﾌｫｰﾑ(ajax) --->
+<div class='comment_form'>
+  <p>コメント者:<%= current_user.name %></p>
+  <%= form_for @comment, url:  message_comments_path(@message) , method: :post, html: { multipart: true}, remote: true do |f| %>
+    <%= f.text_area :content, :size=>"80x6", :maxlength => "5000" %>
+  <div class='image_form'>
+    <%= f.file_field :images, multiple: true,id: "file",class: 'image',:size=>"60",class:'btn'%>
+  </div>
+    <%= f.hidden_field :message_id, :value => @message.id %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :user_name, :value => current_user.name %>
+  <div class='submit_form'>
+    <%= f.submit 'コメント',class:'btn' %>
+  </div>
+  <%end%>
+</div>
+
+  <!--- ｺﾒﾝﾄ一覧(ajax) --->
+  <table class ="table_comment", id = "comments">
+    <%= render @comments %>
+  </table>
+
+</body>

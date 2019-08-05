@@ -1,0 +1,24 @@
+<head>
+<title>ﾒｯｾｰｼﾞ一覧</title>
+</head>
+
+
+<body>
+<button class= 'btn'><%= link_to  "メッセージを送る", new_message_path, class: 'btn-sm' %></button>  
+
+<button class= 'btn'><%= link_to '送信メッセージ一覧' ,messages_sent_path, class: 'btn-sm'%></button>
+
+<!--- 検索ﾌｫｰﾑ表示/非表示 --->
+<button id = 'form_show' class= 'btn'>詳細検索</button>
+
+<!--- 検索ﾌｫｰﾑ --->
+<div id = 'content_form', style="display:none" class = 'off'>
+  <%= search_form_for @search_messages do |f| %>
+    <%= f.search_field :title_or_body_or_user_name_or_comments_content_cont%>
+    <%= f.label 'を含む(標題,本文,投稿者,ｺﾒﾝﾄの文で検索)' %>
+    <%= f.submit '検索',:class => 'btn'%>
+  <%end%>
+</div>
+  
+  <%= render "index" %>
+</body>

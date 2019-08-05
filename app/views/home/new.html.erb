@@ -1,0 +1,61 @@
+<head>
+<title>ホーム画面</title>
+</head>
+
+
+<body>
+<!--- 画像切り替え ---> <!--- ツールチップ --->
+<figure class='img_change_fig'><img src = 'assets/hyuman.png' width='80',height='80' ></figure>
+<ul class='img_change_ul'>
+  <li class='tooltip_li'><a class='change_img_a' href='assets/hyuman.png'><img src = 'assets/hyuman.png' width='40' height= '40' alt= 'ユーザー管理'></a></li>
+  <li class='tooltip_li'><a class='change_img_a' href='assets/message.png'><img src = 'assets/message.png' width='40' height= '40' alt = 'メッセージ'></a></li>
+</ul>
+<br><br><br>
+
+<!--- タブ表示 --->
+<ul class = 'tab_ul'>
+    <li class='tab_li'><a href="#tab1" class="current tab_a">全体説明</a></li>
+    <li class='tab_li'><a class='tab_a' href="#tab2">ユーザ管理</a></li>
+    <li class='tab_li'><a class='tab_a' href="#tab3">メッセージ</a></li>
+    <li class='tab_li'><a class='tab_a' href="#tab4">04</a></li>
+</ul>
+  <div id="contents">
+    <div id="tab1">
+      <p><strong>01</strong></p>
+      <p>
+      【開発環境構築】<br>
+      ・Dockerfile/docker-compose.ymlを使用した開発環境構築<br>
+      【CI】<br>
+      ・CircleCiを用いた、Githubへpush時の自動ﾃｽﾄ<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;- 'rspec','rubocop'使用<br>
+      【ポートフォリオの機能】<br>
+      ・ﾛｸﾞｲﾝ<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;- sessionによるログイン機能<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;- googleアカウントでのログイン機能<br>
+      ・ユーザー管理<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;- ユーザ登録/編集/削除<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;- ユーザmodel バリデーション<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;- jqueryによる入力フォームのバリデーション<br>
+      ・メッセージ機能<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;- modelの多対多のアソシエーションによるコメント機能<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;- Ajax処理によるコメント投稿/削除・メッセージ削除<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;- Active Storageによるﾌｧｲﾙ投稿<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;- 添付画像・動画のサムネイル表示<br>
+      &nbsp;&nbsp;&nbsp;&nbsp; - kaminariによるページネーション機能<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;- ransackによる検索機能<br>
+      </p>
+    </div>
+    <div id="tab2">
+      <p><strong>02</strong></p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <div id="tab3">
+      <p><strong>03</strong></p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <div id="tab4">
+      <p><strong>04</strong></p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+  </div>
+</body>

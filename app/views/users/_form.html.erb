@@ -1,0 +1,42 @@
+<head>
+<title>新規ﾕｰｻﾞｰ作成</title>
+</head>
+
+
+<body>
+  <!--- ﾊﾞﾘﾃﾞｰｼｮﾝ ｴﾗｰﾒｯｾｰｼﾞ表示 --->
+  <% if @user.errors.present? %>
+    <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <%end%>
+  <%end%>
+
+<div class="form-wrapper">
+  <center>
+  <fieldset>
+    <%= form_with(model: @user, local: true, class: 'form') do |f| %>
+    <div class="form-item user_text_section">
+      <%= f.text_field :name, class: 'user_text',placeholder: "あなたのお名前"%>
+      <p class='alert_user'>名前を入力して下さい<p>
+    </div>
+    <div class="form-item user_mail_section">
+      <%= f.text_field :email, class: 'user_email',placeholder: "あなたのメールアドレス" %>
+      <p class='alert_user'>メールアドレスを入力して下さい<p>
+    </div>
+    <div class="form-item user_pass_section">  
+      <%= f.password_field :password, class: 'user_pass',placeholder: "あなたのパスワード(6文字以上)" %>
+      <p class='alert_user'>パスワードを入力して下さい(6文字以上)<p>
+    </div>
+    <div class="form-item  user_passcon_section">  
+      <%= f.password_field :password_confirmation, class: 'user_passConfirm',placeholder: "パスワード(確認用)"%>
+      <p class='alert_user'>入力されたパスワードと一致させて下さい<p>
+    </div>
+    <div class="form-item">  
+      <%= f.label :admin, '管理者権限'%>
+      <%= f.check_box :admin, class: 'form_control',id: 'form-check-input'%>
+    </div>
+    <div class="button-panel">
+      <%= f.submit '登録', class: 'btn btn-info btn-lg user_btn' %>
+    </div>
+  <%end%>
+</body>

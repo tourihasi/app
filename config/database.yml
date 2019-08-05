@@ -9,13 +9,13 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  username: <%= ENV['DATEBASE_USER_NAME'] %>
-  password: <%= ENV['DATEBASE_USER_PASS'] %>
-  host: localhost
 
 development:
   <<: *default
   database: development_db
+  username: <%= ENV['DATEBASE_USER_NAME']%>
+  password: <%= ENV['DATEBASE_USER_PASS']%>
+  host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -23,7 +23,14 @@ development:
 test:
   <<: *default
   database: test_db
+  username: root
+  password: root
+  #username: <%= ENV['DATEBASE_USER_NAME']%>
+  #password: <%= ENV['DATEBASE_USER_PASS']%>
+  host: 127.0.0.1
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: product_db
+  username: <%= ENV['DATEBASE_USER_NAME']%>
+  password: <%= ENV['DATEBASE_USER_PASS']%>
