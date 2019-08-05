@@ -30,6 +30,14 @@ class MessagesController < ApplicationController
     @messages = @search_messages.result(distinct: true).page(params[:page]).per(10)
   end
 
+  def index_sent #current_userが展開したメッセージだけ表示
+    #binding.pry
+    # ranssackで検索
+    @search_messages = Message.where(user_id: current_user.id).ransack(params[:q])
+    # kaminariでﾍﾟｰｼﾞﾈｰｼｮﾝ
+    @messages = @search_messages.result(distinct: true).page(params[:page]).per(10)
+  end
+
   def edit
     @message = Message.find(params[:id])
   end

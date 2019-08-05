@@ -4,7 +4,9 @@
 
 
 <body>
-<button class= 'btn'><%= link_to  "メッセージを送る", new_message_path, class: 'btn-sm' %></button>
+<button class= 'btn'><%= link_to  "メッセージを送る", new_message_path, class: 'btn-sm' %></button>  
+
+<button class= 'btn'><%= link_to '送信メッセージ一覧' ,messages_sent_path, class: 'btn-sm'%></button>
 
 <!--- 検索ﾌｫｰﾑ表示/非表示 --->
 <button id = 'form_show' class= 'btn'>詳細検索</button>
@@ -17,48 +19,6 @@
     <%= f.submit '検索',:class => 'btn'%>
   <%end%>
 </div>
-
-<!--- ﾒｰｯｾｰｼﾞ一覧 --->
-<table class="table table-striped table-bordered table-sm text-center table_common">
-  <thead class =  "thead-light text-dark">
-    <tr>
-      <th>No.</th>
-      <th>タイトル</th>
-      <th>投稿者</th>
-      <th>投稿日</th>
-      <th>削除</th>
-    </tr>
-  </thead>
-
-  <% i = 0 %>
-  <% @messages.each do |message| %>
-    <tbody>
-      <tr>
-        <td><%= i += 1  %></td>
-        <% if message.title == "" %>
-          <td><%=link_to 'タイトルなし', message_path(message.id)%></td>
-        <% else %>
-          <td><%=link_to message.title, message_path(message.id)%></td>
-        <% end %>
-        <!--- userを関連付けているため取得できる　  belongs_to :user --->
-        <td><%= message.user.name %></td>
-        <td><%= message.created_at.strftime('%Y/%m/%d') %></td>
-        <!--- ﾛｸﾞｲﾝ中のhostのidとﾒｯｾｰｼﾞのidが一緒なら削除ﾘﾝｸ --->
-        <!--- ajax処理追加  remoteとjavascriptで要素取得するために、class delete(任意の名前) --->
-        <% if message.user.id == current_user.id %>
-          <td><%=link_to '削除', message_path(message.id) ,method: :delete, remote: true, class: 'delete' %></td>
-        <%else%>
-          <td></td>
-        <%end%>
-      </tr>
-    </tbody>
-  <%end%>
-</table>
-
-<!--- ﾍﾟｰｼﾞﾈｰｼｮﾝ --->
-<div>
-  <%= page_entries_info @messages %>
-  <%= paginate @messages %>
-</div>
-
+  
+  <%= render "index" %>
 </body>

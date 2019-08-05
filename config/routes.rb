@@ -17,5 +17,7 @@ Rails.application.routes.draw do
   resources :messages do
     resource :comments, onry: [:create,:destroy,:new]
   end
+
+  get '/messages_sent', to: 'messages#index_sent'
   
 end

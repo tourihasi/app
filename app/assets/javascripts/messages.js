@@ -90,3 +90,28 @@ document.addEventListener('turbolinks:load',function(){
       });
   });
 });
+
+//image_form
+$(document).on('turbolinks:load', function() {
+
+  $('#message_images').on('change',function(e){
+    var files = e.target.files; //target.files = ファイル名を取得
+    var d = (new $.Deferred()).resolve();  // http://www.jquerystudy.info/reference/deferred/resolve.html
+    $.each(files,function(i,file){
+      d = d.then(function(){return previewImage(file)});
+    });
+  })
+
+  var previewImage = function(imageFile){
+    var reader = new FileReader();
+    var img = new Image();
+    var def =$.Deferred();
+    reader.onload = function(e){
+      $('.images_field').append(img);
+      img.src = e.target.result;
+      def.resolve(img);
+    };
+    reader.readAsDataURL(imageFile);
+    return def.promise();
+  }
+})
