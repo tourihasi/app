@@ -73,18 +73,18 @@
 	}
 	
 /*共通ﾃｰﾌﾞﾙ*/
-	table{
+	.table_common{
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
   }
   
-  table th,table td{
+  .table_common th,.table_common td{
     padding: 10px 0;
     text-align: center;
   }
   
-  table tr:nth-child(odd){
+  .table_common tr:nth-child(odd){
     background-color: #eee
 	}
 /*共通ﾃｰﾌﾞﾙセルハイライト*/
@@ -98,7 +98,7 @@
 	display:none;
 }
 
-.parent_togle_nav{
+.parent_floating_nav{
 	background:#635F5F;
 	color:#FFF;
 }
@@ -119,12 +119,13 @@
 
 .floating_nav{
 	position:absolute;
-	top:100px;
+	top:15px;
 	right:0px;
 	font-family:Arial, sans-serif;
 	-webkit-font-smoothing:antialiased;
 	background:#E6E5E5;
 	opacity: 0.5;
+	z-index: 20;
 }
 
 .floating > li{

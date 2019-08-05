@@ -43,7 +43,7 @@
     border-width: 0.1ex;
   }
 
-//タイトル装飾
+//タイトル入力装飾
 .nice-wrap_title{
     position: relative;
     height: 30px;
@@ -79,3 +79,75 @@
     color: #000000;
     border-width: 0.1ex;
   }
+
+  //Back-forth ﾍﾟｰｼﾞ前後送りスタイル
+.Back{
+  float: left;
+}
+
+.forth{
+  float: right;
+}
+
+//メッセージヘッド
+.message_head{
+  display: inline-block;
+}
+
+//titlデザイン https://design.webclips.jp/css-midashi-ribon/
+.message_title{
+  position: relative;
+  padding:0.5em 0.5em 0.5em 1.4em;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+.message_title::after{
+  position: absolute;
+  top: 50%;
+  left:0.7em;
+  transform:translateY(-50%);
+  content: '';
+  width: 5px;
+  height:25px;
+  background-color: #446689;
+}
+
+//メッセージ情報
+.message_info{
+  position: relative;
+  padding:0.5em 0.5em 0.5em 1.4em;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+.message_info::after{
+  position: absolute;
+  top: 50%;
+  left:0.7em;
+  transform:translateY(-50%);
+  content: '';
+  width: 5px;
+  height:25px;
+  background-color: #e43099;
+}
+
+//メッセージボディ
+.message_body{
+  position: relative;
+  padding:0.5em 0.5em 0.5em 1.4em;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
+
+//メッセージイメージ
+.message_image{
+  position: relative;
+  padding:0.5em 0.5em 0.5em 1.4em;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  background-color: #ffffff;
+}
