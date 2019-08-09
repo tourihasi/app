@@ -5,7 +5,7 @@ class MessageMailer < ApplicationMailer
     @message = message
     mail(
       subject:'テストメール',
-      to: 'example@.com'
+      to: 'xyezsbf3@i.softbank.jp'
     )
   end
 end
