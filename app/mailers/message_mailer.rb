@@ -3,8 +3,8 @@ class MessageMailer < ApplicationMailer
 
   def creation_email(message)
     @message = message
-    mail (
-      subject: 'テストメール'
+    mail(
+      subject:'テストメール',
       to: 'example@.com'
     )
   end
