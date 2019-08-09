@@ -30,7 +30,7 @@ class MessagesController < ApplicationController
     @messages = @search_messages.result(distinct: true).page(params[:page]).per(10)
 
     respond_to do |format| #viewから送られてくるフォーマットで処理を分岐させる
-      format.html  #fomatが htmlなら　 ...なにもしない
+      format.html  #fomatが htmlなら ...なにもしない
       #fomatがcsvならsend_dataメソッドでデータを送り、@messageデータを  generate_csv(modelに定義した関数)してcsvファイルとして返す
       format.csv { send_data @messages.generate_csv, filename: "メッセージ#{Time.zone.now.strftime('%Y%m%d%S')}.csv"}
     end
@@ -44,7 +44,7 @@ class MessagesController < ApplicationController
     @messages = @search_messages.result(distinct: true).page(params[:page]).per(10)
 
     respond_to do |format| #viewから送られてくるフォーマットで処理を分岐させる
-      format.html  #fomatが htmlなら　 ...なにもしない
+      format.html  #fomatが htmlなら ...なにもしない
       #fomatがcsvならsend_dataメソッドでデータを送り、@messageデータを  generate_csv(modelに定義した関数)してcsvファイルとして返す
       format.csv { send_data @messages.generate_csv, filename: "メッセージ#{Time.zone.now.strftime('%Y%m%d%S')}.csv"}
     end

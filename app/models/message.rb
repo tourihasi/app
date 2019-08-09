@@ -21,9 +21,9 @@ class Message < ApplicationRecord
     ['title','body','created_at']
   end
 
-  def self.generate_csv　#selfは引数
+  def self.generate_csv #selfは引数
     CSV.generate(headers: true) do |csv| #generateでcsv作成
-      csv << csv_attributes #１行目のタイトル　= 'title','body','created_at'
+      csv << csv_attributes #１行目のタイトル= 'title','body','created_at'
       all.each do |message|
         csv << csv_attributes.map{|attr| message.send(attr)} #1行ずつmessageから取り出してcsvに与えている
       end
