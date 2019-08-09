@@ -17,7 +17,7 @@ class MessagesController < ApplicationController
     @message.user_id = current_user.id
 
     if @message.save
-      MessageMailer.creation_email(@message).deliver_now #deliver_now = 即時送信
+      MessageMailer.creation_email(@message).deliver_now # deliver_now = 即時送信
       redirect_to message_path(@message.id)
     else
       render :new
@@ -30,10 +30,10 @@ class MessagesController < ApplicationController
     # kaminariでﾍﾟｰｼﾞﾈｰｼｮﾝ
     @messages = @search_messages.result(distinct: true).page(params[:page]).per(10)
 
-    respond_to do |format| #viewから送られてくるフォーマットで処理を分岐させる
-      format.html  #fomatが htmlなら ...なにもしない
-      #fomatがcsvならsend_dataメソッドでデータを送り、@messageデータを  generate_csv(modelに定義した関数)してcsvファイルとして返す
-      format.csv { send_data @messages.generate_csv, filename: "メッセージ#{Time.zone.now.strftime('%Y%m%d%S')}.csv"}
+    respond_to do |format| # viewから送られてくるフォーマットで処理を分岐させる
+      format.html  # fomatが htmlなら ...なにもしない
+      # fomatがcsvならsend_dataメソッドでデータを送り、@messageデータを  generate_csv(modelに定義した関数)してcsvファイルとして返す
+      format.csv { send_data @messages.generate_csv, filename: "メッセージ#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
     end
   end
 
@@ -44,10 +44,10 @@ class MessagesController < ApplicationController
     # kaminariでﾍﾟｰｼﾞﾈｰｼｮﾝ
     @messages = @search_messages.result(distinct: true).page(params[:page]).per(10)
 
-    respond_to do |format| #viewから送られてくるフォーマットで処理を分岐させる
-      format.html  #fomatが htmlなら ...なにもしない
-      #fomatがcsvならsend_dataメソッドでデータを送り、@messageデータを  generate_csv(modelに定義した関数)してcsvファイルとして返す
-      format.csv { send_data @messages.generate_csv, filename: "メッセージ#{Time.zone.now.strftime('%Y%m%d%S')}.csv"}
+    respond_to do |format| # viewから送られてくるフォーマットで処理を分岐させる
+      format.html  # fomatが htmlなら ...なにもしない
+      # fomatがcsvならsend_dataメソッドでデータを送り、@messageデータを  generate_csv(modelに定義した関数)してcsvファイルとして返す
+      format.csv { send_data @messages.generate_csv, filename: "メッセージ#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
     end
   end
 
