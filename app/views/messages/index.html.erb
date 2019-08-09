@@ -4,7 +4,9 @@
 
 
 <body>
-<button class= 'btn'><%= link_to  "メッセージを送る", new_message_path, class: 'btn-sm' %></button>  
+<button class= 'btn'><%= link_to  "メッセージを送る", new_message_path, class: 'btn-sm' %></button> 
+
+<button class= 'btn'><%= link_to '表示メッセージcsv出力' ,messages_path(format: :csv), class: 'btn-sm'%></button>
 
 <button class= 'btn'><%= link_to '送信メッセージ一覧' ,messages_sent_path, class: 'btn-sm'%></button>
 

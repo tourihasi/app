@@ -28,6 +28,12 @@ class MessagesController < ApplicationController
     @search_messages = Message.order("created_at DESC").ransack(params[:q])
     # kaminariでﾍﾟｰｼﾞﾈｰｼｮﾝ
     @messages = @search_messages.result(distinct: true).page(params[:page]).per(10)
+
+    respond_to do |format| #viewから送られてくるフォーマットで処理を分岐させる
+      format.html  #fomatが htmlなら　 ...なにもしない
+      #fomatがcsvならsend_dataメソッドでデータを送り、@messageデータを  generate_csv(modelに定義した関数)してcsvファイルとして返す
+      format.csv { send_data @messages.generate_csv, filename: "メッセージ#{Time.zone.now.strftime('%Y%m%d%S')}.csv"}
+    end
   end
 
   def index_sent # current_userが展開したメッセージだけ表示
@@ -36,6 +42,12 @@ class MessagesController < ApplicationController
     @search_messages = Message.where(user_id: current_user.id).order("created_at DESC").ransack(params[:q])
     # kaminariでﾍﾟｰｼﾞﾈｰｼｮﾝ
     @messages = @search_messages.result(distinct: true).page(params[:page]).per(10)
+
+    respond_to do |format| #viewから送られてくるフォーマットで処理を分岐させる
+      format.html  #fomatが htmlなら　 ...なにもしない
+      #fomatがcsvならsend_dataメソッドでデータを送り、@messageデータを  generate_csv(modelに定義した関数)してcsvファイルとして返す
+      format.csv { send_data @messages.generate_csv, filename: "メッセージ#{Time.zone.now.strftime('%Y%m%d%S')}.csv"}
+    end
   end
 
   def edit
