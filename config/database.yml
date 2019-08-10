@@ -32,6 +32,6 @@ test:
 
 production:
   <<: *default
-  database: product_db
-  username: <%= ENV['DATEBASE_USER_NAME']%>
-  password: <%= ENV['DATEBASE_USER_PASS']%>
+  database: <%= ENV['DB_NAME'] %> 
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
