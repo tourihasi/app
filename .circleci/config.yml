@@ -52,7 +52,7 @@ jobs:
   
   code-check:
     docker:
-      - image: circleci/ruby:2.4.5-node-browsers
+      - image: circleci/ruby:2.5.0-node-browsers
     working_directory: ~/repo
     steps:
       - checkout

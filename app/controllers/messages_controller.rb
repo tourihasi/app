@@ -28,7 +28,11 @@ class MessagesController < ApplicationController
     # ranssackで検索
     @search_messages = Message.order("created_at DESC").ransack(params[:q])
     # kaminariでﾍﾟｰｼﾞﾈｰｼｮﾝ
-    @messages = @search_messages.result(distinct: true).page(params[:page]).per(10)
+    @messages = @search_messages.result(distinct: true).page(params[:page]).per(8)
+
+    #お気に入り機能
+    @search_star_messages = current_user.star_messages.order("created_at DESC").ransack(params[:q])
+    @star_messages = @search_star_messages.result(distinct: true).page(params[:page]).per(8)
 
     respond_to do |format| # viewから送られてくるフォーマットで処理を分岐させる
       format.html  # fomatが htmlなら ...なにもしない
