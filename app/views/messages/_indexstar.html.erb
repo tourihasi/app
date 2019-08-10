@@ -4,23 +4,19 @@
     <tr>
       <th>マーク</th>
       <th>No.</th>
-      <th><%= sort_link(@search_messages, :title, 'タイトル') %></th>
-      <th><%= sort_link(@search_messages, :user, '投稿者') %></th>
-      <th><%= sort_link(@search_messages, :created_at, '投稿日') %></th>
+      <th><%= sort_link(@search_star_messages, :title, 'タイトル') %></th>
+      <th><%= sort_link(@search_star_messages, :user, '投稿者') %></th>
+      <th><%= sort_link(@search_star_messages, :created_at, '投稿日') %></th>
       <th>削除</th>
     </tr>
   </thead>
 
   <% i = 0 %>
-  <% @messages.each do |message| %>
+  <% @star_messages.each do |message| %>
     <tbody>
       <tr>
         <!--- お気に入り機能 --->
-        <% if message.star_by?(current_user) %> <!--- カレントユーザがお気に入りしていたら --->
-          <td><%= link_to '', message_stars_path(message.id),class: 'btn star_out', method: :delete %></td>
-        <%else%>
-          <td><%= link_to '', message_stars_path(message.id),class: 'btn star_in', method: :post%></td>
-        <%end%>
+        <td><%= link_to '', message_stars_path(message.id),class: 'btn star_out', method: :delete %></td>
         
         <td><%= i += 1  %></td>
         <% if message.title == "" %>
@@ -28,7 +24,7 @@
         <% else %>
           <td><%=link_to message.title, message_path(message.id)%></td>
         <% end %>
-        <!--- userを関連付けているため取得できる　  belongs_to :user --->
+        <!--- userを関連付けているため取得できる  belongs_to :user --->
         <td><%= message.user.name %></td>
         <td><%= message.created_at.strftime('%Y/%m/%d') %></td>
         <!--- ﾛｸﾞｲﾝ中のhostのidとﾒｯｾｰｼﾞのidが一緒なら削除ﾘﾝｸ --->
@@ -45,6 +41,6 @@
 
 <!--- ﾍﾟｰｼﾞﾈｰｼｮﾝ --->
 <div>
-  <%= page_entries_info @messages %>
-  <%= paginate @messages %>
+  <%= page_entries_info @star_messages %>
+  <%= paginate @star_messages %>
 </div>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'stars/create'
+  get 'stars/destroy'
   #users_controller ﾙｰﾃｨﾝｸﾞ
   root to: 'home#new' 
   #users_controller ﾙｰﾃｨﾝｸﾞ
@@ -15,6 +17,7 @@ Rails.application.routes.draw do
 
   #多対多のｱｿｼｴｰｼｮﾝ
   resources :messages do
+    resource :stars, onlt: [:create,:destroy]
     resource :comments, onry: [:create,:destroy,:new]
   end
 

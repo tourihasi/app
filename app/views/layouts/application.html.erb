@@ -251,4 +251,27 @@
   background-image: url("<%= asset_url("papyrus-dark.png") %>");    /*2.class main_imageに画像を表示       */
   background-size:cover;                                            /*画面一杯に表示する */
 }
+
+.star_out{
+  padding: 0.3em 0.3em;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: .4s;
+}
+
+.star_in:hover {
+	background: #4b0723;
+	color: white;
+}
+	
+
+.star_in{
+  border: solid 2px #4b0723;
+	display: inline-block;
+  padding: 0.3em 0.3em;
+  text-decoration: none;
+  color: #4b0723;
+  border-radius: 3px;
+  transition: .4s;
+}
 </style>

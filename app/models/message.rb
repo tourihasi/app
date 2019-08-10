@@ -7,6 +7,14 @@ class Message < ApplicationRecord
   # active strage 複数upload
   has_many_attached :images
 
+  #お気に入り機能
+  has_many :stars
+
+  def star_by?(user)
+    stars.where(user_id: user.id).exists?
+  end
+
+
   # ﾍﾟｰｼﾞ前後送り
   def previous
     Message.order('created_at desc, id desc').where('created_at <= ? and id < ?', created_at, id).first
