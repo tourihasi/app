@@ -16,7 +16,7 @@ development:
  username: <%= ENV['DATEBASE_USER_NAME']%>
  password: <%= ENV['DATEBASE_USER_PASS']%>
  host: localhost
-  #host: db
+ #host: db
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -32,6 +32,6 @@ test:
 
 production:
  <<: *default
-  database: <%= ENV['DB_NAME'] %> 
+ database: <%= ENV['DB_NAME'] %> 
  username: <%= ENV['DB_USERNAME'] %>
  password: <%= ENV['DB_PASSWORD'] %>
