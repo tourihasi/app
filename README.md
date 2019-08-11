@@ -2,7 +2,7 @@
 
 * 【開発環境構築】  
   ・Dockerfile/docker-compose.ymlを使用した開発環境構築  
-  【CI】  
+  【CI】  
   ・CircleCiを用いた、Githubへpush時の自動ﾃｽﾄ  
   ・ 'rspec','rubocop'使用  
 
