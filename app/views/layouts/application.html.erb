@@ -10,7 +10,7 @@
   </head>
 
   <body>
-  <!--- div class='main_image' --->
+	<!--- %=binding.pry% --->
   <%if @current_user then%>
 		<nav>
 		<div class="cp_navi">
@@ -27,6 +27,7 @@
 				</li>
 					<li><a href="#"><%= link_to 'メッセージ', messages_path %></a></li>
 					<li><%= link_to 'サインアウト', logout_path, method: :delete %></li>
+					<a>:<%= current_user.name %><a>
 			</ul>
 		</div>
 		<!--- フローティングメニュー --->

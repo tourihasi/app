@@ -19,18 +19,39 @@ body {
     font: 400 87.5%/1.5em 'Open Sans', sans-serif;
   }
 
+.head{
+  padding: 60px 30px 80px;
+  height: 120vh;
+  background-color:rgba(68, 68, 175, 0.2);
+  color: #fff;
+  text-align: center; /*テキストの横方向での位置を指定*/
+  font-size: 0.8rem;
+  background: url('42f789f309879d7e7bb0352a29c03a44_t.jpeg') fixed;
+  background-size: cover;
+}
+
+.site-title-sub{
+  margin: 0 0 10px;
+  letter-spacing: 1px;
+}
+
+.btn-about{
+  margin: 10px;
+}
+
 /*div class="form-wrapper"*/
 .form-wrapper {
     background: #fafafa;
-    margin: 3em auto;
+    margin: 2em auto;
     padding: 0 1em;
     max-width: 370px;
   }
 
 /* <h1> <form> 装飾 */
-  h1 {
+  .sign-title {
     text-align: center;
     padding: 1em 0;
+    color: #333
   }
   
   .form {

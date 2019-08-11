@@ -74,9 +74,6 @@ class MessagesController < ApplicationController
     @message.destroy
 
     head :no_content
-    # message.jsにAJAX処理記載しています
-    # headメソッドを用いて、ﾚｽﾎﾟﾝｽﾎﾞﾃﾞｨなしで、HTTPｽﾃｰﾀｽ204(成功)が返るようにしておく
-    # なくても動作するが、分かりやすさの為記述
   end
 
   private # images: [] => ﾌｧｲﾙ複数収納

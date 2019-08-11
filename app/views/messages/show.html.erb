@@ -47,7 +47,9 @@
       &nbsp;&nbsp;<%='展開日:' %><%= @message.created_at.strftime("%Y/%m/%d %H:%M") %>
     </p>
   </div>
-    <%= simple_format(@message.body, class: 'message_body')%>  <!--- 改行とか反映される --->
+  <div class='message_body'>
+    <%= simple_format(@message.body)%>  <!--- 改行とか反映される --->
+  <div>
   <div class='message_image'>
     <%='添付ﾌｧｲﾙ:' %>
     <% if @message.images.attached? %>

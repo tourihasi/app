@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'stars/destroy'
   #users_controller ﾙｰﾃｨﾝｸﾞ
   root to: 'home#new' 
+  get '/about', to: 'home#about'
   #users_controller ﾙｰﾃｨﾝｸﾞ
   resources :users   
   

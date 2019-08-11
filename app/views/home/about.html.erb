@@ -1,0 +1,86 @@
+<head>
+<title>about</title>
+</head>
+
+
+<body>
+ <%= link_to 'ログインして機能を使う', login_path, class: 'btn-login' %>
+
+<div class='about-wrper'>  
+
+<section class='work' >
+    <h2 class='heading'>機能一覧</h2>
+    <p>
+    下記が機能一覧になります。<br>
+    業務の効率化に是非お役立て下さい！！！！
+    </p>
+    <div class='work-wrapper'>
+      <div class='work-box'>
+        <%= image_tag ('messageform.png'),size:'450x250',class: 'work-image'%>
+        <div class='work-description'>
+          メッセージ管理機能<br>
+          <a herf='#' class="button button-ghost">詳しく</a>
+        </div>
+      </div>
+
+      <div class='work-box'>
+          <%= image_tag ('messageform.png'),size:'450x250',class: 'work-image'%>
+          <div class='work-description'>
+            帳票管理<br>
+            <a herf='#' class="button button-ghost">もっと見る</a>
+          </div>
+      </div>
+
+      <div class='work-box'>
+          <%= image_tag ('messageform.png'),size:'450x250',class: 'work-image'%>
+          <div class='work-description'>
+            伝票照合<br>
+            <a herf='#' class="button button-ghost">もっと見る</a>
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section class='messagemanage' id='about'>
+    <h1 class='hedding'>メッセージ機能</h1>
+    <p class='site-title-sub'>~社内の情報伝達を簡単に~</p>
+    
+    <p class='about-text'>
+      社内の情報伝達で困ったことはないでしょうか？<br>
+      メッセージ機能を使えば、<br>
+      ・Reのたくさんついたメールで埋まる<br>
+      ・情報のやりとりの流れが分かりずらい<br>
+      そのような、煩わしさから解放されます！！！！
+    </p>
+    <%= image_tag ('messageform.png'), class:'message_form_png',size:'1080x500' %>
+  </section>
+
+  <section class='formmanage'>
+    <h1 class='hedding'>帳票管理機能</h1>
+    <p class='site-title-sub'>~帳票の最新版まる分かり~</p>
+    
+    <p class='about-text'>
+      社内の帳票管理で困ったことはないでしょうか？<br>
+      帳票管理機能を使えば、<br>
+      ・最新版と付けられた、誰が更新したか分からないデータ<br>
+      ・最新版のデータを知っている人を探さないといけない<br>
+      そのような、煩わしさから解放されます！！！！
+    </p>
+    <%= image_tag ('messageform.png'), class:'message_form_png',size:'1080x500' %>
+  </section>
+
+    <section class='collationmanage'>
+    <h1 class='hedding'>伝票照合機能</h1>
+    <p class='site-title-sub'>~お客さんへの伝票を間違いなく照合添付~</p>
+    
+    <p class='about-text'>
+      お客さんへの伝票を間違いなく添付<br>
+      製造業の業務でよくある製品への伝票添付間違い<br>
+      そのようなミスをなくすためにこの機能はあります。<br>
+      使い方は簡単、市販のQRコードリーダを購入し、社内の表示にQRコード添付<br>
+      あとはお客さん伝票のQRコードとQRコードを読み込むと正解音がなります。
+    </p>
+    <%= image_tag ('messageform.png'), class:'message_form_png',size:'1080x500' %>
+  </section>
+</div>
+</body>
