@@ -17,7 +17,7 @@ class MessagesController < ApplicationController
     @message.user_id = current_user.id
 
     if @message.save
-      MessageMailer.creation_email(@message).deliver_now # deliver_now = 即時送信
+      #MessageMailer.creation_email(@message).deliver_now # deliver_now = 即時送信
       redirect_to message_path(@message.id)
     else
       render :new
