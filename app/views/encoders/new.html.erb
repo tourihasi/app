@@ -1,0 +1,17 @@
+<head>
+<title>ﾒｯｾｰｼﾞ作成</title>
+</head>
+
+<body>
+<div class='encord_form'>
+<%=form_with url:new_encoders_path do |f| %>
+  <%= f.text_field :text%>
+  <%= f.submit 'QRコード作成'%>
+<%end%>
+
+</div>
+<%= image_tag (@qrcode) %>
+
+
+<%= link_to 'encord', new_encoders_path%>
+</body>

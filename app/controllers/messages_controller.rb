@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    # @messageのuser_idはサインイン中のuserのid
+    #@messageのuser_idはサインイン中のuserのid
     @message.user_id = current_user.id
 
     if @message.save
