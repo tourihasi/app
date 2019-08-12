@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  get 'parentforms/new'
+  get 'parentforms/create'
+  get 'parentforms/edit'
+  get 'parentforms/delete'
+  get 'parentforms/index'
   get 'stars/create'
   get 'stars/destroy'
   #users_controller ﾙｰﾃｨﾝｸﾞ

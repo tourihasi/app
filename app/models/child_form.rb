@@ -1,0 +1,2 @@
+class ChildForm < ApplicationRecord
+end

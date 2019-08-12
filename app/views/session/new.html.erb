@@ -7,7 +7,11 @@
 <header class='head'>
   <p class='site-title-sub'>~社内メッセージ/帳票管理/かんばん照合~</p>
   <h1 class='site-title'>製造業の業務便利ツール</h1>
-  <%= link_to 'このアプリでできる事', about_path, class: 'btn btn-about'%>
+  <%= link_to 'このアプリでできる事', about_path, class: 'btn btn-about'%><br>
+  <a>
+    テストアカウントネーム:SAMPLE<br>
+    テストアカウンパスワード:SAMPLE
+  </a>
   <div class="form-wrapper">
     <center>
     <fieldset>
@@ -21,7 +25,6 @@
         </div>
         <div class="button-panel">
           <%= f.submit 'サインイン', class: 'btn' %>
-          <%= link_to '簡単ログイン', class: 'btn'%>
         </div>
         <%end%>
     
