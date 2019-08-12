@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
-  get 'stars/create'
-  get 'stars/destroy'
+  resources :collations
+  resource :encoders, only: [:create,:new]
+  post 'encoders/new', to: 'encoders#new'
+
   #users_controller ﾙｰﾃｨﾝｸﾞ
   root to: 'home#new' 
   get '/about', to: 'home#about'
@@ -18,8 +20,8 @@ Rails.application.routes.draw do
 
   #多対多のｱｿｼｴｰｼｮﾝ
   resources :messages do
-    resource :stars, onlt: [:create,:destroy]
-    resource :comments, onry: [:create,:destroy,:new]
+    resource :stars, only: [:create,:destroy]
+    resource :comments, only: [:create,:destroy,:new]
   end
 
   get '/messages_sent', to: 'messages#index_sent'

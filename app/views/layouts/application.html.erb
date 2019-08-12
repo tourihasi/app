@@ -26,8 +26,18 @@
 					</div>
 				</li>
 					<li><a href="#"><%= link_to 'メッセージ', messages_path %></a></li>
+					<li>
+					<a href="#">伝票照合 <span class="caret"></span></a>
+					<div>
+						<ul>
+							<li><%= link_to '照合', new_collation_path %></li>
+							<li><%= link_to '一覧', collations_path %></li>
+							<li><%= link_to 'QRコード生成', new_encoders_path%></li>
+						</ul>
+					</div>
+				</li>
 					<li><%= link_to 'サインアウト', logout_path, method: :delete %></li>
-					<a>:<%= current_user.name %><a>
+					<a>名前:<%= current_user.name %><a>
 			</ul>
 		</div>
 		<!--- フローティングメニュー --->
