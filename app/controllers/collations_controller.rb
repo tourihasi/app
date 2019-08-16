@@ -1,16 +1,13 @@
 class CollationsController < ApplicationController
   def new
     @collation = Collation.new
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    render 'new'
   end
 
   def create
+    #binding.pry
     @collation = Collation.new(collation_params)
     @collation.user_name = current_user.name
-    #binding.pry
     
     if @collation.save
       render 'new'

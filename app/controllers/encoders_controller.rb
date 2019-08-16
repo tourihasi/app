@@ -4,19 +4,18 @@ require 'rqrcode_png'
 require 'chunky_png'
   
   def new
-    content = params[:text]
+    binding.pry
+    content = params[:text0]
     if content.nil?
-      content ='1'
+      content ='テスト'
     else
-      content = params.require(:text)
+      content = params.require(:text0)
     end
     @qrcode = qr_encode(content)
   end
 
   def create
-    content = '1'
-    @gg = qr_encode(content)
-    redirect_to new_encoders_path
+
   end
 
   def qr_encode(content, options = {})

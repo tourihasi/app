@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-
+  resources :parentforms, only: [:create,:new,:index,:show] do
+    resources :childforms, only: [:new,:create,:delete,:edit,:update]
+  end
   resources :collations
   resource :encoders, only: [:create,:new]
   post 'encoders/new', to: 'encoders#new'

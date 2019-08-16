@@ -42,7 +42,6 @@ class MessagesController < ApplicationController
   end
 
   def index_sent # current_userが展開したメッセージだけ表示
-    # binding.pry
     # ranssackで検索
     @search_messages = Message.where(user_id: current_user.id).order("created_at DESC").ransack(params[:q])
     # kaminariでﾍﾟｰｼﾞﾈｰｼｮﾝ

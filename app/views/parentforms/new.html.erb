@@ -1,2 +1,18 @@
-<h1>Parentforms#new</h1>
-<p>Find me in app/views/parentforms/new.html.erb</p>
+<head>
+<title>マスター帳票作成</title>
+</head>
+
+<body>
+  <%= form_with(model: @parentform, local: true, url: parentforms_path, class:'parent_form') do |f| %>
+    <p>
+      <%= f.label :name, '帳票名:' %>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :user_name, '登録者:' %>
+      <%= f.text_field :person, value:@current_user.name, readonly: true%>
+    </p>
+    <p><%= f.file_field :image %></p>
+    <%= f.submit '登録', class: 'btn' %>
+  <%end%>
+</body>

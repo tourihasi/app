@@ -1,2 +1,34 @@
-<h1>Parentforms#index</h1>
-<p>Find me in app/views/parentforms/index.html.erb</p>
+<head>
+<title></title>
+</head>
+
+<body>
+<button class='btn'><%= link_to 'マスター登録', new_parentform_path %></button>
+<table class='table_common'>
+  <thead>
+    <th>項目名</th>
+    <th>登録者</th>
+    <th>データ</th>
+    <th>ファイル名</th>
+    <th>帳票更新</th>
+  </thead>
+  <tbody>
+    <% @parentforms.each do |parent|%>
+    <tr>
+      <td><%= link_to parent.name, parentform_path(parent.id) %></td>
+      <td><%= parent.user_name %></td>
+      <% if parent.image.attached? %>
+        <% if parent.image.filename.to_s =~ /\.jpeg$|\.jpg$|\.gif$|\.png$|\.bmp$/ %>
+          <td><%=link_to image_tag(image , height: '20'), (rails_blob_path(image, disposition: "attachment"))%></td>
+        <%elsif parent.image.filename.to_s  =~ /\.mp4$|\.wmv$|\.avi$|\.mov$/  %>
+          <td><%=link_to image_tag(parent.image.preview(resize: "100x100>")), (rails_blob_path(parent.image, disposition: "attachment")) %></td>
+        <%else%>
+          <td><%=link_to image_tag("file_icon.png", height: '20'), (rails_blob_path(parent.image, disposition: "attachment")) %></td>
+        <%end%>
+        <td><%= parent.image.filename %></td>
+        <td><%= link_to '更新', new_parentform_childform_path(parent.id) %></td>
+      <% end %>
+    <%end%>
+  </tbody>
+</table>
+</body>

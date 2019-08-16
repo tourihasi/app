@@ -1,3 +1,21 @@
-// Place all the styles related to the parentforms controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.parent_form{
+	position: relative;
+	width: 80%;
+	margin: 40px 3%;
+}
+
+#parent_form_name,#parent_form_person{
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 50%;
+	margin: 8px 0;
+	padding: 0.3em;
+	transition: 0.3s;
+	border: 1px solid #1b2538;
+	border-radius: 4px;
+	outline: none;
+}
+
+#parent_form_name:focus,#parent_form_person:focus{
+  border-color: #da3c41;
+}

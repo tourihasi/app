@@ -3,15 +3,10 @@
 </head>
 
 <body>
-<div class='encord_form'>
-<%=form_with url:new_encoders_path do |f| %>
-  <%= f.text_field :text%>
-  <%= f.submit 'QRコード作成'%>
+<button class='btn encode_btn'>入力フォーム追加</button>
+<%=form_with url:new_encoders_path,local: true, method: :post,class:'encode_form' do |f| %>
+  <p><%= f.submit 'QRコード作成'%></p>
+  <%= f.text_field :text0,class:'encode_text'%>
 <%end%>
-
-</div>
 <%= image_tag (@qrcode) %>
-
-
-<%= link_to 'encord', new_encoders_path%>
 </body>
