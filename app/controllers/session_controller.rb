@@ -5,7 +5,7 @@ class SessionController < ApplicationController
 
   def create
     if params[:commit]
-      session[:user_id] = 1
+      session[:user_id] = 162
       redirect_to root_path
       return
     end
