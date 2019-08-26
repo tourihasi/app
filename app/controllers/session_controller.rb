@@ -4,10 +4,9 @@ class SessionController < ApplicationController
   def new; end
 
   def create
-    if params[:commit]
+    if params[:commit] != "サインイン"
       session[:user_id] = 162
       redirect_to root_path
-      return
     end
     user = User.find_by(name: session_params[:name])
     if user&.authenticate(session_params[:password]) # authenticate = 暗号化されてないパスワードとpassword_digest属性値の一致を検証
