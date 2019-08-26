@@ -26,6 +26,7 @@ document.addEventListener('turbolinks:load',function(){
       })
       .always(function(){
         number1.focus();
+        $('.collation-form')[0].reset();
         $(".submit-collation").removeAttr("disabled");
       })
     }
@@ -34,15 +35,14 @@ document.addEventListener('turbolinks:load',function(){
       if ( e.which == 13 ) {
         $('.collation-form').on('submit',function(e){
           e.preventDefault();
-          let $collation_num1 = number1.val();
-          let $collation_num2 = number2.val();   
+          var $collation_num1 = number1.val();
+          var $collation_num2 = number2.val();   
           let $target1 = number1.val().length;
           let $target2 = number2.val().length;
           if ($target1 > $target2 ){
-            let $collation_num1 = number2.val()
-            let $collation_num2 = number1.val()
+            var $collation_num1 = number2.val();
+            var $collation_num2 = number1.val();
           }
-          debugger;
           if ($collation_num2.match($collation_num1) && $collation_num2 != $collation_num1){   
             $('#audio1').volume = 0.2;
             $('#audio1').get(0).play();
@@ -53,7 +53,6 @@ document.addEventListener('turbolinks:load',function(){
             succes.val('false');
           }
           let formData = new FormData(this);
-          $('.collation-form')[0].reset();
           ajax_collation(formData)
         })
       }

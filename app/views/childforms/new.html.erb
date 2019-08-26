@@ -21,7 +21,9 @@
     <p>
       <%= f.label :revision, '改定符号:' %>
       <%= f.text_field :revision %>
-      <%= '最新改定符号:' + @parentform.child_forms.last.revision %>
+      <% if @parentform.child_forms[0] != nil %>
+        <%= '最新改定符号:' + @parentform.child_forms.last.revision %>
+      <%end%>
     </p>
       <%= f.label :reson, '改定理由:' %>
       <%= f.text_field :reson %>

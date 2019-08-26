@@ -27,8 +27,14 @@
         <%else%>
           <td><%=link_to image_tag("file_icon.png", height: '20'), (rails_blob_path(parent.child_forms.last.image, disposition: "attachment")) %></td>
         <%end%>
+      <%else%>
+        <td>更新なし</td>
       <%end%>
-      <td><%= parent.child_forms.last.image.filename %></td>
+      <%if parent.child_forms.last.present?%>
+        <td><%= parent.child_forms.last.image.filename %></td>
+      <%else%>
+        <td><%=parent.image.filename%></td>
+      <%end%>
       <td><%= link_to '更新', new_parentform_childform_path(parent.id) %></td>
       <td><%= link_to '削除', parentform_path(parent.id), method: :delete %></td>
       <% if parent.image.filename.to_s =~ /\.jpeg$|\.jpg$|\.gif$|\.png$|\.bmp$/ %>

@@ -8,8 +8,18 @@
   <p><%= f.submit 'QRコード作成'%></p>
   <%= f.text_field :text, name: "text[]",class:'encode_text' %>
 <%end%>
-<% @qrcodes.each do |qrcode|%>
-  <%= qrcode[:content]%>
-  <%= image_tag (qrcode[:qr]), size: '100x100' %>
-<%end%>
+
+<table>
+  <thead>
+    <th>情報</th>
+    <th>画像</th>
+  </thead>
+  <tbody>
+  <% @qrcodes.each do |qrcode|%>
+    <tr>
+      <td><%= qrcode[:content]%></td>
+      <td><%= image_tag (qrcode[:qr]), size: '100x100' %></td>
+    </tr>
+  <%end%>
+  </tbody>
 </body>
