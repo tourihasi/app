@@ -42,15 +42,17 @@
 		</div>
 		<!--- フローティングメニュー --->
 		<nav class='floating_nav'>
-		<p class='floating_menue'>メニュー</p>
+		<span class='floating_menue'>メニュー</span>
 		<ul class='floating'>
-			<li><%= link_to 'Home', root_path %></li>
+			<%= link_to 'Home', root_path %>
 			<li>
 				<a class='parent_floating_nav_user'>ユーザ管理</a>
 				<div class = 'child_floating_nav_user'>
 					<ul>
-						<li><%= link_to '一覧', users_path %></li>
-						<li><%= link_to '登録', new_user_path %></li>
+						<%= link_to '一覧', users_path %>
+						<% if current_user.admin? %>
+							<%= link_to '登録', new_user_path %>
+						<%end%>
 					</ul>
 				</div>	
 			</li>
@@ -58,12 +60,12 @@
 				<a class='parent_floating_nav_message'>メッセージ</a>
 				<div class = 'child_floating_nav_message'>
 					<ul>
-						<li><%= link_to 'メッセージ一覧', messages_path %></li>
-						<li><%= link_to 'メッセージ送信', new_message_path %></li>
+						<%= link_to 'メッセージ一覧', messages_path %>
+						<%= link_to 'メッセージ送信', new_message_path %>
 					</ul>
 				</div>	
 			</li>
-			<li><%= link_to 'サインアウト', logout_path, method: :delete %></li>
+			<%= link_to 'サインアウト', logout_path, method: :delete %>
 		</ul>
 		</nav>
 	<%end%>
