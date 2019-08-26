@@ -6,7 +6,10 @@
 <button class='btn encode_btn'>入力フォーム追加</button>
 <%=form_with url:new_encoders_path,local: true, method: :post,class:'encode_form' do |f| %>
   <p><%= f.submit 'QRコード作成'%></p>
-  <%= f.text_field :text0,class:'encode_text'%>
+  <%= f.text_field :text, name: "text[]",class:'encode_text' %>
 <%end%>
-<%= image_tag (@qrcode) %>
+<% @qrcodes.each do |qrcode|%>
+  <%= qrcode[:content]%>
+  <%= image_tag (qrcode[:qr]), size: '100x100' %>
+<%end%>
 </body>

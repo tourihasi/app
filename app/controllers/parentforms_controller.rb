@@ -8,18 +8,17 @@ class ParentformsController < ApplicationController
     @parentform.user_id = current_user.id
     if @parentform.save
       redirect_to parentforms_path
-    else   
+    else
       render :new
     end
   end
 
   def show
     @parentform = ParentForm.find(params[:id])
-    @childforms = ChildForm.where(parent_form_id: params[:id])
+    @childforms = ChildForm.where(parent_form_id: params[:id]).order("created_at DESC")
   end
 
-  def edit
-  end
+  def edit; end
 
   def destroy
     @parentform = ParentForm.find(params[:id])
@@ -34,8 +33,9 @@ class ParentformsController < ApplicationController
     @parentforms = ParentForm.all
   end
 
-  private 
+  private
+
   def parentform_params
-    params.require(:parent_form).permit(:name,:image)
+    params.require(:parent_form).permit(:name, :image)
   end
 end

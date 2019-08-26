@@ -9,7 +9,7 @@ CSV.generate(encoding: Encoding::SJIS, row_sep: "\r\n", force_quotes: true) do |
       collation.number2,
       collation.succes,
       collation.user_name,
-      collation.created_at.strftime("%Y/%m/%d %H:%M"),
+      collation.created_at.strftime("%Y/%m/%d %H:%M")
     ]
     csv << column_values
   end

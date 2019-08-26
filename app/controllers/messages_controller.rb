@@ -13,11 +13,9 @@ class MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    #@messageのuser_idはサインイン中のuserのid
     @message.user_id = current_user.id
 
     if @message.save
-      #MessageMailer.creation_email(@message).deliver_now # deliver_now = 即時送信
       redirect_to message_path(@message.id)
     else
       render :new
@@ -25,31 +23,24 @@ class MessagesController < ApplicationController
   end
 
   def index
-    # ranssackで検索
     @search_messages = Message.order("created_at DESC").ransack(params[:q])
-    # kaminariでﾍﾟｰｼﾞﾈｰｼｮﾝ
     @messages = @search_messages.result(distinct: true).page(params[:page]).per(8)
 
-    #お気に入り機能
     @search_star_messages = current_user.star_messages.order("created_at DESC").ransack(params[:q])
     @star_messages = @search_star_messages.result(distinct: true).page(params[:page]).per(8)
 
-    respond_to do |format| # viewから送られてくるフォーマットで処理を分岐させる
-      format.html  # fomatが htmlなら ...なにもしない
-      # fomatがcsvならsend_dataメソッドでデータを送り、@messageデータを  generate_csv(modelに定義した関数)してcsvファイルとして返す
+    respond_to do |format|
+      format.html
       format.csv { send_data @messages.generate_csv, filename: "メッセージ#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
     end
   end
 
-  def index_sent # current_userが展開したメッセージだけ表示
-    # ranssackで検索
+  def index_sent
     @search_messages = Message.where(user_id: current_user.id).order("created_at DESC").ransack(params[:q])
-    # kaminariでﾍﾟｰｼﾞﾈｰｼｮﾝ
     @messages = @search_messages.result(distinct: true).page(params[:page]).per(10)
 
-    respond_to do |format| # viewから送られてくるフォーマットで処理を分岐させる
-      format.html  # fomatが htmlなら ...なにもしない
-      # fomatがcsvならsend_dataメソッドでデータを送り、@messageデータを  generate_csv(modelに定義した関数)してcsvファイルとして返す
+    respond_to do |format|
+      format.html
       format.csv { send_data @messages.generate_csv, filename: "メッセージ#{Time.zone.now.strftime('%Y%m%d%S')}.csv" }
     end
   end

@@ -27,32 +27,32 @@
     <li class='tab_li'><a href="#tab1" class="current tab_a">全体説明</a></li>
     <li class='tab_li'><a class='tab_a' href="#tab2">ユーザ管理</a></li>
     <li class='tab_li'><a class='tab_a' href="#tab3">メッセージ</a></li>
+    <li class='tab_li'><a class='tab_a' href="#tab3">帳票管理</a></li>
+    <li class='tab_li'><a class='tab_a' href="#tab3">伝票照合</a></li>
 </ul>
   <div id="contents">
     <div id="tab1">
       <p><strong>01</strong></p>
       <p>
-      【開発環境構築】<br>
-      ・Dockerfile/docker-compose.ymlを使用した開発環境構築<br>
-      【CI】<br>
-      ・CircleCiを用いた、Githubへpush時の自動ﾃｽﾄ<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;- 'rspec','rubocop'使用<br>
-      【ポートフォリオの機能】<br>
-      ・ﾛｸﾞｲﾝ<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;- sessionによるログイン機能<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;- googleアカウントでのログイン機能<br>
-      ・ユーザー管理<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;- ユーザ登録/編集/削除<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;- ユーザmodel バリデーション<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;- jqueryによる入力フォームのバリデーション<br>
-      ・メッセージ機能<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;- modelの多対多のアソシエーションによるコメント機能<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;- Ajax処理によるコメント投稿/削除<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;- Active Storageによるﾌｧｲﾙ投稿<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;- 添付画像・動画のサムネイル表示<br>
-      &nbsp;&nbsp;&nbsp;&nbsp; - kaminariによるページネーション機能<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;- ransackによる検索機能<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;- csv出力<br>
+        <h2>概要説明</h2><br>
+        &nbsp;&nbsp;<h3>・ユーザ管理</h3><br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-ユーザ一覧確認<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-ユーザ編集(本人の場合)<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-ユーザ削除(管理者の場合)<br>
+        &nbsp;&nbsp;<h3>・メッセージ機能</h3><br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-メッセージ展開<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-メッセージへファイル添付(複数可)<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-メッセージへコメント可能<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-メッセージをマーク可(マークしたメッセージはホームへ表示される)<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-検索機能(標題・タイトル・本文・コメントから検索ワードが含まれているものを表示)<br>
+        &nbsp;&nbsp;<h3>・帳票管理</h3><br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-マスター帳票登録<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-マスター帳票を更新していき改定履歴管理<br>
+        &nbsp;&nbsp;<h3>・伝票照合</h3><br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-伝票照合時、同一または、違う種類の場合不正解音が鳴ります<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-照合結果一覧表示<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-照合結果CSV出力(日付ごと出力することも可能)<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-QRコード生成(複数可)<br>
       </p>
     </div>
     <div id="tab2">

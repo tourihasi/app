@@ -37,6 +37,7 @@
       <th>データ１</th>
       <th>データ２</th>
       <th>合否</th>
+      <th>照合日</th>
       <th>照合者</th>
       <th>削除</th>
     </tr>
@@ -48,9 +49,12 @@
         <td><%=collation.number1%></td>
         <td><%=collation.number2%></td>
         <td><%=collation.succes%></td>
+        <td><%=collation.created_at.strftime("%y/%m/%d %H:%M")%></td>
         <td><%=collation.user_name%></td>
-        <%if collation.user_name == current_user.name%>
-          <td><%= '削除' %></td>
+        <%if current_user.admin? %>
+          <td><%= link_to '削除', collation_path(collation.id), method: :delete %></td>
+        <%else%>
+          <td></td>
         <%end%>
       </tr>
     </tbody>

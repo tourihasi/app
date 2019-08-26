@@ -1,16 +1,16 @@
 class CollationsController < ApplicationController
   def new
     @collation = Collation.new
-    render 'new'
   end
 
   def create
-    #binding.pry
     @collation = Collation.new(collation_params)
     @collation.user_name = current_user.name
-    
     if @collation.save
-      render 'new'
+      respond_to do |format|
+        format.html
+        format.json
+      end
     else
       render 'new'
     end
@@ -20,9 +20,9 @@ class CollationsController < ApplicationController
     @collations = Collation.all.page(params[:page]).per(20)
     if params[:select_csv]
       @date_extract = if params[:data]
-        Time.zone.local(params[:data]['created_at(1i)'].to_i, params[:data]['created_at(2i)'].to_i, params[:data]['created_at(3i)'].to_i).to_date
-      else
-        Date.today
+                        Time.zone.local(params[:data]['created_at(1i)'].to_i, params[:data]['created_at(2i)'].to_i, params[:data]['created_at(3i)'].to_i).to_date
+                      else
+                        Date.today
       end
       @date_today = Date.today
       @date_ago = @date_today - @date_extract
@@ -52,11 +52,15 @@ class CollationsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    @collation = Collation.find(params[:id])
+    @collation.destroy
+    redirect_to collations_path
   end
 
   private
+
   def collation_params
-    params.require(:collation).permit(:number1,:number2,:succes)
+    params.require(:collation).permit(:number1, :number2, :succes)
   end
 end

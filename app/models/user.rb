@@ -39,10 +39,10 @@ class User < ApplicationRecord
   # commentsを通してmessagesからたくさんのcomments_messagesを持っている
   has_many :comments_messages, through: :comments, source: :message
 
-  #お気に入り機能
+  # お気に入り機能
   has_many :stars
   has_many :star_messages, through: :stars, source: :message
 
-  has_many :parent_forms,dependent: :destroy
-  has_many :childforms,dependent: :destroy
+  has_many :parent_forms, dependent: :destroy
+  has_many :childforms, dependent: :destroy
 end

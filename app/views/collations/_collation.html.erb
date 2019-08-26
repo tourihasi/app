@@ -1,0 +1,22 @@
+<head>
+<title>collation</title>
+</head>
+<body>
+<div class="collation-container">
+    <%= form_for(@collation, url: collations_path, method: :post, :html => {:class => "collation-form"}) do |f| %>
+      <div class="form-group">
+        <label class="control-label col-xs-2">データ１:</label>
+        <%= f.text_field :number1%>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-xs-2">データ２:</label>
+        <%= f.text_field :number2%>
+      </div>
+      <%= f.hidden_field :succes %>
+      <%= f.submit "照合", class: 'submit-collation'%>
+    <% end %>
+
+    <%= audio_tag("seikai.mp3",id:"audio1", :aoutplay => true, :controls => true) %>
+    <%= audio_tag("huseikai.mp3",id:"audio2", :aoutplay => true, :controls => true) %>
+</div>
+</body>

@@ -104,21 +104,6 @@ $(document).on('turbolinks:load', function() {
     }
   })
 
-
-  //メッセージ一覧表示・非表示
-  var star_massage_show = $('.star_massage_show')
-  var star_message_container = $('.star_message_container')
-  star_massage_show.on('click', function(){
-    star_message_container.toggleClass('off')
-    if(star_message_container.hasClass('off')){
-      star_massage_show.text('マークメッセージ/表示')
-      star_message_container.fadeOut(200);
-    } else {
-      star_massage_show.text('マークメッセージ/非表示'); 
-      star_message_container.fadeIn(200); 
-    }
-  })
-
   var massage_show = $('.massage_show')
   var message_container = $('.message_container')
   massage_show.on('click', function(){
