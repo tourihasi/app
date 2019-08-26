@@ -110,4 +110,4 @@ gem 'sidekiq'
 gem 'rqrcode'
 gem 'rqrcode_png'
 gem 'chunky_png'
-gem "font-awesome-rails"
+#gem "font-awesome-rails"
