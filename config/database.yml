@@ -9,7 +9,7 @@ development:
  database: development_db
  username: <%=ENV["DATEBASE_USER_NAME"]%>
  password: <%=ENV["DATEBASE_USER_PASS"]%>
- host: db
+ host: localhost
 
 test:
  <<: *default
