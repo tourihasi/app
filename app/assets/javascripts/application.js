@@ -43,13 +43,11 @@ document.addEventListener('turbolinks:load',function(){
     })
 })
 
-  /*共通ﾃｰﾌﾞﾙセルハイライト*/
   document.addEventListener('turbolinks:load',function(){
     $('td').hover(function(){
       $(this).parent().addClass('target')
       var myIndex = $(this).index()
       myIndex ++;
-      //同列もハイライト $("td:nth-child("+ myIndex +")").addClass('target')
     },function(){
       $(".target").removeClass("target")
     })
