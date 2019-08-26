@@ -7,23 +7,20 @@ class SessionController < ApplicationController
     if params[:commit] != "サインイン"
       session[:user_id] = 162
       redirect_to root_path
-      exit
-    end
-    user = User.find_by(name: session_params[:name])
-    if user&.authenticate(session_params[:password]) # authenticate = 暗号化されてないパスワードとpassword_digest属性値の一致を検証
-      # SampleJob.perform_later # ActiveJob:  サンプルジョブをperform_later = できる時にやってね
-      # SampleJob.set(wait_until: Date.tomorrow.noon).perform_later # 翌日の正午=tomorrow.noon に実行
-      session[:user_id] = user.id
-      redirect_to root_path
     else
-      render :new
+      user = User.find_by(name: session_params[:name])
+      if user&.authenticate(session_params[:password])
+        session[:user_id] = user.id
+        redirect_to root_path
+      else
+        render :new
+      end
     end
   end
 
   # google認証
   def create_g
     user = User.from_omniauth(request.env["omniauth.auth"])
-    # binding.pry
     if user.save
       session[:user_id] = user.id
       redirect_to root_path

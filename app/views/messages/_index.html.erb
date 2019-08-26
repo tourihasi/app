@@ -32,11 +32,8 @@
         <% else %>
           <td><%=link_to message.title, message_path(message.id)%></td>
         <% end %>
-        <!--- userを関連付けているため取得できる　  belongs_to :user --->
         <td><%= message.user.name %></td>
         <td><%= message.created_at.strftime('%Y/%m/%d') %></td>
-        <!--- ﾛｸﾞｲﾝ中のhostのidとﾒｯｾｰｼﾞのidが一緒なら削除ﾘﾝｸ --->
-        <!--- ajax処理追加  remoteとjavascriptで要素取得するために、class delete(任意の名前) --->
         <% if message.user.id == current_user.id %>
           <td><%=link_to '削除', message_path(message.id) ,method: :delete, remote: true, class: 'delete' %></td>
         <%else%>
