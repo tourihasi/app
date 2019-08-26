@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require_tree .
 
+
 /*フローティングメニュー*/
 document.addEventListener('turbolinks:load',function(){
   $('.parent_floating_nav_user').click(function(){
@@ -42,13 +43,11 @@ document.addEventListener('turbolinks:load',function(){
     })
 })
 
-  /*共通ﾃｰﾌﾞﾙセルハイライト*/
   document.addEventListener('turbolinks:load',function(){
     $('td').hover(function(){
       $(this).parent().addClass('target')
       var myIndex = $(this).index()
       myIndex ++;
-      //同列もハイライト $("td:nth-child("+ myIndex +")").addClass('target')
     },function(){
       $(".target").removeClass("target")
     })

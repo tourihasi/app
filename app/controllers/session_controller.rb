@@ -4,12 +4,15 @@ class SessionController < ApplicationController
   def new; end
 
   def create
-    # user = nil
+    if params[:commit]
+      session[:user_id] = 1
+      redirect_to root_path
+      return
+    end
     user = User.find_by(name: session_params[:name])
-    # binding.pry
     if user&.authenticate(session_params[:password]) # authenticate = 暗号化されてないパスワードとpassword_digest属性値の一致を検証
-      SampleJob.perform_later # ActiveJob:  サンプルジョブをperform_later = できる時にやってね
-      SampleJob.set(wait_until: Date.tomorrow.noon).perform_later # 翌日の正午=tomorrow.noon に実行
+      # SampleJob.perform_later # ActiveJob:  サンプルジョブをperform_later = できる時にやってね
+      # SampleJob.set(wait_until: Date.tomorrow.noon).perform_later # 翌日の正午=tomorrow.noon に実行
       session[:user_id] = user.id
       redirect_to root_path
     else

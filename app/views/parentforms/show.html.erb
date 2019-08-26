@@ -1,0 +1,39 @@
+<head>
+<title>帳票詳細一覧</title>
+</head>
+<body>
+<button class='btn'><%=link_to '更新',new_parentform_childform_path(params[:id])%></button>
+<table class='table_common'>
+  <thead>
+    <th>項目名</th>
+    <th>登録者</th>
+    <th>改定符号/リヴィジョン</th>
+    <th>改定理由</th>
+    <th>データ</th>
+    <th>改定日</th>
+    <th>更新日</th>
+  </thead>
+  <tbody>
+  <% @childforms.each do |child| %>
+  <tr>
+    <td><%=@parentform.name%></td>
+    <td><%=child.user.name%></td>
+    <td><%=child.revision%></td>
+    <td><%=child.reson%></td>
+      <% if child.image.attached? %>
+        <% if child.image.filename.to_s =~ /\.jpeg$|\.jpg$|\.gif$|\.png$|\.bmp$/ %>
+          <td><%=link_to image_tag(child.image , height: '20'), (rails_blob_path(child.image, disposition: "attachment"))%></td>
+        <%elsif child.image.filename.to_s  =~ /\.mp4$|\.wmv$|\.avi$|\.mov$/  %>
+          <td><%=link_to image_tag(child.image.preview(resize: "100x100>")), (rails_blob_path(child.image, disposition: "attachment")) %></td>
+        <%else%>
+          <td><%=link_to image_tag("file_icon.png", height: '20'), (rails_blob_path(child.image, disposition: "attachment")) %></td>
+        <%end%>
+      <%else%>
+      <td>データなし</td>
+      <% end %>
+    <td><%=child.created_at.strftime("%Y-%m-%d %H:%M")%></td>
+    <td><%=child.updated_at.strftime("%Y-%m-%d %H:%M")%></td>
+  <%end%>
+  </tbody>
+</table>
+</body>

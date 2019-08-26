@@ -4,29 +4,34 @@
 
 
 <body>
-<div class="form-wrapper">
-  <center>
-  <fieldset>
-    <h1>Sign In/サインイン</h1>
-      <%= form_with scope: :session, class: 'form', local: true do |f| %>
-      <div class="form-item">
-        <%= f.text_field :name, class: 'form-control',placeholder: "あなたのお名前"%>
-      </div>
-      <div class="form-item">
-        <%= f.password_field :password, class: 'form-control',placeholder: "あなたのﾊﾟｽﾜｰﾄﾞ"%>
-      </div>
-      <div class="button-panel">
-        <%= f.submit 'サインイン', class: 'btn' %>
-      </div>
-      <%end%>
-  
-    <button id="google-login", class="btn-default"><%= link_to "googleアカウントでﾛｸﾞｲﾝ", "/auth/google_oauth2", id: "sign_in", method: :post %></button>
-  <div class="form-footer">
-    <p>サンプルユーザー名:サンプル pass:aaaaaa</p>
-    <p><a href="#"><%= link_to '新規登録', new_user_path %></a></p>
-    <p><a href="#">パスワードを忘れた場合</a></p>
+<header class='head'>
+  <p class='site-title-sub'>~社内メッセージ/帳票管理/かんばん照合~</p>
+  <h1 class='site-title'>製造業の業務便利ツール</h1>
+  <%= link_to 'このアプリでできる事', about_path, class: 'btn btn-about'%><br>
+  <%= form_with scope: :session, method: :post, local: true do |f| %>
+    <%= f.submit '簡単ログイン', class: 'btn'%>
+  <%end%>
+  <div class="form-wrapper">
+    <center>
+    <fieldset>
+      <h1 class='sign-title'>Sign In/サインイン</h1>
+        <%= form_with scope: :session, class: 'form', local: true do |f| %>
+        <div class="form-item">
+          <%= f.text_field :name, class: 'form-control',placeholder: "あなたのお名前"%>
+        </div>
+        <div class="form-item">
+          <%= f.password_field :password, class: 'form-control',placeholder: "あなたのﾊﾟｽﾜｰﾄﾞ"%>
+        </div>
+        <div class="button-panel">
+          <%= f.submit 'サインイン', class: 'btn' %>
+        </div>
+        <%end%>
+    
+    <div class="form-footer">
+      <p><a href="#"><%= link_to '新規登録', new_user_path %></a></p>
+    </div>
+    </fieldset>
+    </center>
   </div>
-  </fieldset>
-  </center>
-</div>
+</header>
 </body>

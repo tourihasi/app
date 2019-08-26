@@ -1,0 +1,21 @@
+.child_form{
+	position: relative;
+	width: 80%;
+	margin: 40px 3%;
+}
+
+#child_form_name,#child_form_person,#child_form_revision,#child_form_reson{
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 50%;
+	margin: 8px 0;
+	padding: 0.3em;
+	transition: 0.3s;
+	border: 1px solid #1b2538;
+	border-radius: 4px;
+	outline: none;
+}
+
+#child_form_revision:focus,#parent_form_reson:focus{
+  border-color: #da3c41;
+}

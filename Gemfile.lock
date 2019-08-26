@@ -46,7 +46,7 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     arel (9.0.0)
     ast (2.4.0)
-    autoprefixer-rails (7.1.6)
+    autoprefixer-rails (9.6.1.1)
       execjs
     bcrypt (3.1.13)
     better_errors (2.5.1)
@@ -74,6 +74,7 @@ GEM
       xpath (~> 3.2)
     childprocess (1.0.1)
       rake (< 13.0)
+    chunky_png (1.3.11)
     coderay (1.1.2)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -101,8 +102,8 @@ GEM
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.11.1)
-    ffi (1.11.1-x64-mingw32)
-    ffi (1.11.1-x86-mingw32)
+    font-awesome-rails (4.7.0.5)
+      railties (>= 3.2, < 6.1)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hashie (3.6.0)
@@ -136,20 +137,12 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.11.3)
     msgpack (1.3.1)
-    msgpack (1.3.1-x64-mingw32)
-    msgpack (1.3.1-x86-mingw32)
     multi_json (1.13.1)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
     mysql2 (0.5.2)
-    mysql2 (0.5.2-x64-mingw32)
-    mysql2 (0.5.2-x86-mingw32)
     nio4r (2.4.0)
-    nokogiri (1.10.3)
-      mini_portile2 (~> 2.4.0)
-    nokogiri (1.10.3-x64-mingw32)
-      mini_portile2 (~> 2.4.0)
-    nokogiri (1.10.3-x86-mingw32)
+    nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     oauth2 (1.4.1)
       faraday (>= 0.8, < 0.16.0)
@@ -160,10 +153,10 @@ GEM
     omniauth (1.9.0)
       hashie (>= 3.4.6, < 3.7.0)
       rack (>= 1.6.2, < 3)
-    omniauth-google-oauth2 (0.7.0)
+    omniauth-google-oauth2 (0.8.0)
       jwt (>= 2.0)
       omniauth (>= 1.1.1)
-      omniauth-oauth2 (>= 1.5)
+      omniauth-oauth2 (>= 1.6)
     omniauth-oauth2 (1.6.0)
       oauth2 (~> 1.1)
       omniauth (~> 1.9)
@@ -171,6 +164,8 @@ GEM
     parallel (1.17.0)
     parser (2.6.3.0)
       ast (~> 2.4.0)
+    polyamorous (2.3.0)
+      activerecord (>= 5.0)
     popper_js (1.14.5)
     pry (0.12.2)
       coderay (~> 1.1.0)
@@ -180,7 +175,7 @@ GEM
     public_suffix (3.1.1)
     puma (3.12.1)
     rack (2.0.7)
-    rack-protection (2.0.5)
+    rack-protection (2.0.7)
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -200,7 +195,7 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.1.0)
+    rails-html-sanitizer (1.2.0)
       loofah (~> 2.2, >= 2.2.2)
     rails-i18n (5.1.3)
       i18n (>= 0.7, < 2)
@@ -213,16 +208,22 @@ GEM
       thor (>= 0.19.0, < 2.0)
     rainbow (3.0.0)
     rake (12.3.3)
-    ransack (2.1.1)
+    ransack (2.3.0)
       actionpack (>= 5.0)
       activerecord (>= 5.0)
       activesupport (>= 5.0)
       i18n
+      polyamorous (= 2.3.0)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     redis (4.1.2)
     regexp_parser (1.6.0)
+    rqrcode (0.10.1)
+      chunky_png (~> 1.0)
+    rqrcode_png (0.1.5)
+      chunky_png
+      rqrcode
     rspec-core (3.8.2)
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.4)
@@ -254,8 +255,8 @@ GEM
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-    sass-rails (5.0.7)
-      railties (>= 4.0.0, < 6)
+    sass-rails (5.1.0)
+      railties (>= 5.2.0)
       sass (~> 3.1)
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
@@ -285,8 +286,6 @@ GEM
     turbolinks-source (5.2.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2019.2)
-      tzinfo (>= 1.0.0)
     uglifier (4.1.20)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.6.0)
@@ -307,8 +306,6 @@ GEM
 
 PLATFORMS
   ruby
-  x64-mingw32
-  x86-mingw32
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
@@ -318,9 +315,11 @@ DEPENDENCIES
   bootstrap (~> 4.1.1)
   byebug
   capybara (>= 2.15)
+  chunky_png
   coffee-rails (~> 4.2)
   dotenv-rails
   factory_bot_rails (~> 4.11)
+  font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
   kaminari (~> 0.17.0)
@@ -334,6 +333,8 @@ DEPENDENCIES
   rails (~> 5.2.3)
   rails-i18n
   ransack
+  rqrcode
+  rqrcode_png
   rspec-rails
   rubocop
   sass-rails (~> 5.0)

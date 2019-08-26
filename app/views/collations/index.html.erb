@@ -1,0 +1,68 @@
+<head>
+<title>collation</title>
+</head>
+<body>
+<%= form_tag(collations_path(format: :csv),:method => 'get') do %>
+  <table>
+    <tr>
+      <%= datetime_select :data, :created_at,
+        :use_two_digit_numbers => true,
+        :use_month_numbers => true,
+        :discard_minute => true ,
+        :discard_hour => true
+      %><br>
+      <input type= "submit" name="select_csv" value="選択した日付のCSV出力" class="btn">
+      <input type= "submit" name="all_csv" value="すべてのCSVデータ出力" class="btn">
+  </tr>
+  </table><br>
+<% end %>
+<%= form_tag(collations_path,:method => 'get') do %>
+  <table>
+    <tr>
+      <%= datetime_select :data, :created_at,
+        :use_two_digit_numbers => true,
+        :use_month_numbers => true,
+        :discard_minute => true ,
+        :discard_hour => true
+      %><br>
+      <input type= "submit" name="select_date" value="選択した日付のデータ検索" class="btn">
+      <input type= "submit" name="all_date" value="すべてのデータ表示" class="btn">
+    </tr>
+  </table><br>
+<% end %>
+<table class="table table-striped table-bordered table-sm text-center table_common">
+  <thead class =  "thead-light text-dark">
+    <tr>
+      <th>No.</th>
+      <th>データ１</th>
+      <th>データ２</th>
+      <th>合否</th>
+      <th>照合日</th>
+      <th>照合者</th>
+      <th>削除</th>
+    </tr>
+  <% i = 0 %>
+  <% @collations.each do |collation| %>
+    <tbody>
+      <tr>
+        <td><%=i += 1%></td>
+        <td><%=collation.number1%></td>
+        <td><%=collation.number2%></td>
+        <td><%=collation.succes%></td>
+        <td><%=collation.created_at.strftime("%y/%m/%d %H:%M")%></td>
+        <td><%=collation.user_name%></td>
+        <%if current_user.admin? %>
+          <td><%= link_to '削除', collation_path(collation.id), method: :delete %></td>
+        <%else%>
+          <td></td>
+        <%end%>
+      </tr>
+    </tbody>
+  <%end%>
+  </thead>
+</table>
+<div>
+  <%= page_entries_info @collations %>
+  <%= paginate @collations %>
+</div>
+</body>
