@@ -4,7 +4,6 @@ require 'rqrcode_png'
 require 'chunky_png'
   
   def new
-    binding.pry
     content = params[:text0]
     if content.nil?
       content ='テスト'

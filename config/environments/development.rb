@@ -31,10 +31,10 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true #Connection refused - connect(2) for 127.0.0.1:6379  https://qiita.com/yang8/items/61396e46bd70e207730f
   #メール動作確認の為に、mailchtcherのsntpサーバーを有効にする 本番環境では、production.rbに記述
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {address: '127.0.0.1',port: 1025}
+  #config.action_mailer.delivery_method = :smtp
+  #config.action_mailer.smtp_settings = {address: '127.0.0.1',port: 1025}
 
   config.action_mailer.perform_caching = false
 
@@ -62,5 +62,5 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.active_job.queue_adapter = :sidekiq
+  #config.active_job.queue_adapter = :sidekiq
 end

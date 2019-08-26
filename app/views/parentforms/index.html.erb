@@ -8,18 +8,23 @@
   <thead>
     <th>項目名</th>
     <th>登録者</th>
-    <th>データ</th>
+    <th>最新版データ</th>
     <th>ファイル名</th>
     <th>帳票更新</th>
+    <th>削除</th>
   </thead>
   <tbody>
     <% @parentforms.each do |parent|%>
     <tr>
       <td><%= link_to parent.name, parentform_path(parent.id) %></td>
-      <td><%= parent.user_name %></td>
+      <td><%= parent.user.name %></td>
+      <%if parent.child_forms.last.present?%>
+        <%if parent.child_forms.last.image.attached?%>
+        <%end%>
+      <%end%>
       <% if parent.image.attached? %>
         <% if parent.image.filename.to_s =~ /\.jpeg$|\.jpg$|\.gif$|\.png$|\.bmp$/ %>
-          <td><%=link_to image_tag(image , height: '20'), (rails_blob_path(image, disposition: "attachment"))%></td>
+          <td><%=link_to image_tag(parent.image , height: '20'), (rails_blob_path(parent.image, disposition: "attachment"))%></td>
         <%elsif parent.image.filename.to_s  =~ /\.mp4$|\.wmv$|\.avi$|\.mov$/  %>
           <td><%=link_to image_tag(parent.image.preview(resize: "100x100>")), (rails_blob_path(parent.image, disposition: "attachment")) %></td>
         <%else%>
@@ -27,6 +32,7 @@
         <%end%>
         <td><%= parent.image.filename %></td>
         <td><%= link_to '更新', new_parentform_childform_path(parent.id) %></td>
+        <td><%= link_to '削除', parentform_path(parent.id), method: :delete %></td>
       <% end %>
     <%end%>
   </tbody>

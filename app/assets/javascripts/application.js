@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require_tree .
 
+
 /*フローティングメニュー*/
 document.addEventListener('turbolinks:load',function(){
   $('.parent_floating_nav_user').click(function(){

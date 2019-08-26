@@ -4,6 +4,24 @@
 
 
 <body>
+<div class='home__star-menu'>
+  <div class='star_message_container'>
+    <h2 class='star_message_container__h2'>マークしたメッセージ一覧</h2>
+    <!--- 検索ﾌｫｰﾑ表示/非表示 --->
+    <button id = 'form_show_star' class= 'btn'>詳細検索</button>
+  </div>
+    <!--- 検索ﾌｫｰﾑ --->
+    <div id = 'content_form_star', style="display:none" class = 'off'>
+      <%= search_form_for @search_star_messages, url: messages_path do |f| %>
+        <%= f.search_field :title_or_body_or_user_name_or_comments_content_cont%>
+        <%= f.label 'を含む(標題,本文,投稿者,ｺﾒﾝﾄの文で検索)' %>
+        <%= f.submit '検索',:class => 'btn'%>
+      <%end%>
+    </div>
+    <div class='home__table-star'>
+      <%= render "messages/indexstar" %>
+    </div>
+</div>
 <!--- タブ表示 --->
 <ul class = 'tab_ul'>
     <li class='tab_li'><a href="#tab1" class="current tab_a">全体説明</a></li>

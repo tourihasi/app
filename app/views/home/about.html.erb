@@ -3,8 +3,10 @@
 </head>
 
 
-<body>
- <%= link_to 'ログインして機能を使う', login_path, class: 'btn-login' %>
+<body>  
+<%= form_with url: login_path , method: :post, local: true do |f| %>
+    <%= f.submit '簡単ログインして機能を使う', class: 'btn-login'%>
+<%end%>
 
 <div class='about-wrper'>  
 
@@ -19,7 +21,7 @@
         <%= image_tag ('messageform.png'),size:'450x250',class: 'work-image'%>
         <div class='work-description'>
           メッセージ管理機能<br>
-          <a herf='#' class="button button-ghost">詳しく</a>
+          <button class="btn btn-message">詳しく</button>
         </div>
       </div>
 
@@ -27,7 +29,7 @@
           <%= image_tag ('messageform.png'),size:'450x250',class: 'work-image'%>
           <div class='work-description'>
             帳票管理<br>
-            <a herf='#' class="button button-ghost">もっと見る</a>
+            <button class="btn btn-form">詳しく</button>
           </div>
       </div>
 
@@ -35,13 +37,13 @@
           <%= image_tag ('messageform.png'),size:'450x250',class: 'work-image'%>
           <div class='work-description'>
             伝票照合<br>
-            <a herf='#' class="button button-ghost">もっと見る</a>
+            <button class="btn btn-collation">詳しく</button>
           </div>
       </div>
     </div>
   </section>
 
-  <section class='messagemanage' id='about'>
+  <section class='message-manage' id='about'>
     <h1 class='hedding'>メッセージ機能</h1>
     <p class='site-title-sub'>~社内の情報伝達を簡単に~</p>
     
@@ -55,11 +57,11 @@
     <%= image_tag ('messageform.png'), class:'message_form_png',size:'1080x500' %>
   </section>
 
-  <section class='formmanage'>
+  <section class='form-manage'>
     <h1 class='hedding'>帳票管理機能</h1>
     <p class='site-title-sub'>~帳票の最新版まる分かり~</p>
     
-    <p class='about-text'>
+    <p class='about-text-form'>
       社内の帳票管理で困ったことはないでしょうか？<br>
       帳票管理機能を使えば、<br>
       ・最新版と付けられた、誰が更新したか分からないデータ<br>
@@ -69,7 +71,7 @@
     <%= image_tag ('messageform.png'), class:'message_form_png',size:'1080x500' %>
   </section>
 
-    <section class='collationmanage'>
+    <section class='collation-manage'>
     <h1 class='hedding'>伝票照合機能</h1>
     <p class='site-title-sub'>~お客さんへの伝票を間違いなく照合添付~</p>
     

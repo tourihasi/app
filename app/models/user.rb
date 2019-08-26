@@ -43,6 +43,6 @@ class User < ApplicationRecord
   has_many :stars
   has_many :star_messages, through: :stars, source: :message
 
-  has_many :parentforms
-  has_many :childforms
+  has_many :parent_forms,dependent: :destroy
+  has_many :childforms,dependent: :destroy
 end

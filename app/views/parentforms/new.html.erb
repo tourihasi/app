@@ -3,6 +3,12 @@
 </head>
 
 <body>
+  <% if @parentform.errors.any? %>
+    <% @parentform.errors.full_messages.each do |message| %>
+      <%= message %>
+    <%end%> 
+  <%end%>
+
   <%= form_with(model: @parentform, local: true, url: parentforms_path, class:'parent_form') do |f| %>
     <p>
       <%= f.label :name, '帳票名:' %>

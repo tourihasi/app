@@ -1,15 +1,13 @@
 Rails.application.routes.draw do
-  resources :parentforms, only: [:create,:new,:index,:show] do
-    resources :childforms, only: [:new,:create,:delete,:edit,:update]
+  resources :parentforms, only: [:create,:new,:index,:show,:destroy] do
+    resources :childforms, only: [:new,:create,:destroy,:edit,:update]
   end
   resources :collations
   resource :encoders, only: [:create,:new]
   post 'encoders/new', to: 'encoders#new'
 
-  #users_controller ﾙｰﾃｨﾝｸﾞ
   root to: 'home#new' 
   get '/about', to: 'home#about'
-  #users_controller ﾙｰﾃｨﾝｸﾞ
   resources :users   
   
   get '/login', to: 'session#new'

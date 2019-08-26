@@ -5,21 +5,29 @@ class ParentformsController < ApplicationController
 
   def create
     @parentform = ParentForm.new(parentform_params)
-    @parentform.user_name = current_user.name
-    @parentform.save
-    redirect_to parentforms_path
+    @parentform.user_id = current_user.id
+    if @parentform.save
+      redirect_to parentforms_path
+    else   
+      render :new
+    end
   end
 
   def show
-    binding.pry
     @parentform = ParentForm.find(params[:id])
-    @childforms = ChildForm.where(parent_id: params[:id])
+    @childforms = ChildForm.where(parent_form_id: params[:id])
   end
 
   def edit
   end
 
-  def delete
+  def destroy
+    @parentform = ParentForm.find(params[:id])
+    if @parentform.destroy
+      redirect_to parentforms_path
+    else
+      render parentforms_path
+    end
   end
 
   def index
@@ -28,6 +36,6 @@ class ParentformsController < ApplicationController
 
   private 
   def parentform_params
-    params.require(:parent_form).permit(:name,:user_name,:user_id,:image)
+    params.require(:parent_form).permit(:name,:image)
   end
 end

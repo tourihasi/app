@@ -8,10 +8,9 @@
   <p class='site-title-sub'>~社内メッセージ/帳票管理/かんばん照合~</p>
   <h1 class='site-title'>製造業の業務便利ツール</h1>
   <%= link_to 'このアプリでできる事', about_path, class: 'btn btn-about'%><br>
-  <a>
-    テストアカウントネーム:SAMPLE<br>
-    テストアカウンパスワード:SAMPLE
-  </a>
+  <%= form_with scope: :session, method: :post, local: true do |f| %>
+    <%= f.submit '簡単ログイン', class: 'btn'%>
+  <%end%>
   <div class="form-wrapper">
     <center>
     <fieldset>

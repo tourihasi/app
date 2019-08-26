@@ -5,12 +5,8 @@
 
 <body>
 <button class= 'btn'><%= link_to  "メッセージを送る", new_message_path, class: 'btn-sm' %></button> 
-
 <button class= 'btn'><%= link_to '表示メッセージcsv出力' ,messages_path(format: :csv), class: 'btn-sm'%></button>
-
 <button class= 'btn'><%= link_to '送信メッセージ一覧' ,messages_sent_path, class: 'btn-sm'%></button>
-
-<button class='massage_show btn'>メッセージ一覧/非表示</button>
 <div class='message_container on'>
   <!--- 検索ﾌｫｰﾑ表示/非表示 --->
   <button id = 'form_show' class= 'btn'>詳細検索</button>
@@ -25,22 +21,5 @@
   </div>
     
     <%= render "index" %>
-</div>
-
-<button class='star_massage_show btn'>マークメッセージ/非表示</button>
-<div class='star_message_container'>
-  <!--- 検索ﾌｫｰﾑ表示/非表示 --->
-  <button id = 'form_show_star' class= 'btn'>詳細検索</button>
-
-  <!--- 検索ﾌｫｰﾑ --->
-  <div id = 'content_form_star', style="display:none" class = 'off'>
-    <%= search_form_for @search_star_messages, url: messages_path do |f| %>
-      <%= f.search_field :title_or_body_or_user_name_or_comments_content_cont%>
-      <%= f.label 'を含む(標題,本文,投稿者,ｺﾒﾝﾄの文で検索)' %>
-      <%= f.submit '検索',:class => 'btn'%>
-    <%end%>
-  </div>
-
-  <%= render "indexstar" %>
 </div>
 </body>
