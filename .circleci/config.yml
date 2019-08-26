@@ -57,7 +57,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: bundle のｾｯﾄｱｯﾌﾟ
+          name: bundle のｾｯﾄｱｯﾌﾟ bundler2系に対応
           command: |
             sudo gem update --system
             sudo gem uninstall bundler
