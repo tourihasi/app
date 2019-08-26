@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_09_104638) do
+ActiveRecord::Schema.define(version: 2019_08_25_090836) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,27 @@ ActiveRecord::Schema.define(version: 2019_08_09_104638) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "child_forms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "revision"
+    t.string "reson"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "parent_form_id"
+    t.index ["parent_form_id"], name: "index_child_forms_on_parent_form_id"
+    t.index ["user_id"], name: "index_child_forms_on_user_id"
+  end
+
+  create_table "collations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "number1"
+    t.string "number2"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "succes"
+    t.string "user_name"
+  end
+
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -44,6 +65,15 @@ ActiveRecord::Schema.define(version: 2019_08_09_104638) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "documents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "revision"
+    t.string "user_name"
+    t.string "reson"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -51,6 +81,14 @@ ActiveRecord::Schema.define(version: 2019_08_09_104638) do
     t.text "body"
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "parent_forms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_parent_forms_on_user_id"
   end
 
   create_table "stars", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -75,4 +113,7 @@ ActiveRecord::Schema.define(version: 2019_08_09_104638) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "child_forms", "parent_forms"
+  add_foreign_key "child_forms", "users"
+  add_foreign_key "parent_forms", "users"
 end

@@ -31,10 +31,14 @@
       <%= f.password_field :password_confirmation, class: 'user_passConfirm',placeholder: "パスワード(確認用)"%>
       <p class='alert_user'>入力されたパスワードと一致させて下さい<p>
     </div>
-    <div class="form-item">  
-      <%= f.label :admin, '管理者権限'%>
-      <%= f.check_box :admin, class: 'form_control',id: 'form-check-input'%>
-    </div>
+    <%if current_user != nil %>
+      <%if current_user.admin?%>
+        <div class="form-item">  
+          <%= f.label :admin, '管理者権限'%>
+          <%= f.check_box :admin, class: 'form_control',id: 'form-check-input'%>
+        </div>
+      <%end%>
+    <%end%>
     <div class="button-panel">
       <%= f.submit '登録', class: 'btn btn-info btn-lg user_btn' %>
     </div>

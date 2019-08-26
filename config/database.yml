@@ -9,16 +9,13 @@ development:
  database: development_db
  username: <%=ENV["DATEBASE_USER_NAME"]%>
  password: <%=ENV["DATEBASE_USER_PASS"]%>
- host: localhost
- #host: db
+ host: db
 
 test:
  <<: *default
  database: test_db
  username: root
  password: root
- #username: <%= ENV['DATEBASE_USER_NAME']%>
- #password: <%= ENV['DATEBASE_USER_PASS']%>
  host: 127.0.0.1
 
 production:

@@ -4,57 +4,127 @@
 
 
 <body>
+<div class='home__star-menu'>
+  <div class='star_message_container'>
+    <h2 class='star_message_container__h2'>マークしたメッセージ一覧</h2>
+    <!--- 検索ﾌｫｰﾑ表示/非表示 --->
+    <button id = 'form_show_star' class= 'btn'>詳細検索</button>
+  </div>
+    <!--- 検索ﾌｫｰﾑ --->
+    <div id = 'content_form_star', style="display:none" class = 'off'>
+      <%= search_form_for @search_star_messages, url: messages_path do |f| %>
+        <%= f.search_field :title_or_body_or_user_name_or_comments_content_cont%>
+        <%= f.label 'を含む(標題,本文,投稿者,ｺﾒﾝﾄの文で検索)' %>
+        <%= f.submit '検索',:class => 'btn'%>
+      <%end%>
+    </div>
+    <div class='home__table-star'>
+      <%= render "messages/indexstar" %>
+    </div>
+</div>
 <!--- タブ表示 --->
 <ul class = 'tab_ul'>
     <li class='tab_li'><a href="#tab1" class="current tab_a">全体説明</a></li>
     <li class='tab_li'><a class='tab_a' href="#tab2">ユーザ管理</a></li>
     <li class='tab_li'><a class='tab_a' href="#tab3">メッセージ</a></li>
+    <li class='tab_li'><a class='tab_a' href="#tab4">帳票管理</a></li>
+    <li class='tab_li'><a class='tab_a' href="#tab5">伝票照合</a></li>
 </ul>
   <div id="contents">
     <div id="tab1">
       <p><strong>01</strong></p>
       <p>
-      【開発環境構築】<br>
-      ・Dockerfile/docker-compose.ymlを使用した開発環境構築<br>
-      【CI】<br>
-      ・CircleCiを用いた、Githubへpush時の自動ﾃｽﾄ<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;- 'rspec','rubocop'使用<br>
-      【ポートフォリオの機能】<br>
-      ・ﾛｸﾞｲﾝ<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;- sessionによるログイン機能<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;- googleアカウントでのログイン機能<br>
-      ・ユーザー管理<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;- ユーザ登録/編集/削除<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;- ユーザmodel バリデーション<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;- jqueryによる入力フォームのバリデーション<br>
-      ・メッセージ機能<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;- modelの多対多のアソシエーションによるコメント機能<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;- Ajax処理によるコメント投稿/削除<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;- Active Storageによるﾌｧｲﾙ投稿<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;- 添付画像・動画のサムネイル表示<br>
-      &nbsp;&nbsp;&nbsp;&nbsp; - kaminariによるページネーション機能<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;- ransackによる検索機能<br>
-      &nbsp;&nbsp;&nbsp;&nbsp;- csv出力<br>
+        <h2>概要説明</h2><br>
+        &nbsp;&nbsp;<h3>・ユーザ管理</h3><br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-ユーザ一覧確認<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-ユーザ編集(本人の場合)<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-ユーザ削除(管理者の場合)<br>
+        &nbsp;&nbsp;<h3>・メッセージ機能</h3><br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-メッセージ展開<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-メッセージへファイル添付(複数可)<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-メッセージへコメント可能<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-メッセージをマーク可(マークしたメッセージはホームへ表示される)<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-検索機能(標題・タイトル・本文・コメントから検索ワードが含まれているものを表示)<br>
+        &nbsp;&nbsp;<h3>・帳票管理</h3><br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-マスター帳票登録<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-マスター帳票を更新していき改定履歴管理<br>
+        &nbsp;&nbsp;<h3>・伝票照合</h3><br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-伝票照合時、同一または、違う種類の場合不正解音が鳴ります<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-照合結果一覧表示<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-照合結果CSV出力(日付ごと出力することも可能)<br>
+         &nbsp;&nbsp;&nbsp;&nbsp;-QRコード生成(複数可)<br>
       </p>
     </div>
     <div id="tab2">
       <p><strong>02</strong></p>
       <p>
-        ・ユーザー管理機能使い方
-        &nbsp;&nbsp;&nbsp;&nbsp;- ユーザーを自分で作成することができます<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;- ユーザーを登録・削除・編集することが出来ます<br>
+        <h2>ユーザー管理機能使い方</h2><br>
+        &nbsp;&nbsp; <h4>編集ボタン</h4><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;-本人のユーザアカウントのみ編集することが出来ます。<br>
+        &nbsp;&nbsp; <h4>削除ボタン</h4><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;- 管理者の場合、ユーザーのアカウントを削除することが出来ます。<br>
+        &nbsp;&nbsp; <h4>登録ボタン</h4><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;- 管理者の場合、メニューバーに登録ボタンが現れます。<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;- 管理者の場合、管理者権限を持たせたユーザーを作成可能です。<br> 
       </p>
     </div>
     <div id="tab3">
       <p><strong>03</strong></p>
       <p>
-        ・メッセージ機能使い方
-        &nbsp;&nbsp;&nbsp;&nbsp;- メッセージが送れます<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;- メッセージに対してファイルが添付出来ます<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;- メッセージに対してコメントが打てます（ファイル添付も可）<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;- 表示されているメッセージをCSV出力出来ます<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;- メッセージをマーク（お気に入り）登録出来ます<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;- 自分が送信したメッセージにだけソートできます<br>
+        <h2>メッセージ機能使い方</h2><br>
+        &nbsp;&nbsp; <h4>メッセージを送るボタン</h4><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;- メッセージを展開出来ます。<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;- メッセージに対して複数ファイル添付出来ます(5メガバイトまで)<br>
+        &nbsp;&nbsp; <h4>メッセージをマークする</h4><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;- メッセージ一覧にて、マークしたメッセージのチェックボタンを押すとマークすることが出来ます。<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;- マークされたメッセージはHomeに一覧が表示されます<br>
+        &nbsp;&nbsp; <h4>コメントをする</h4><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;- メッセージ一覧から、コメントするメッセージを選びます<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;- コメントに対しても複数ファイル添付可能です(5メガバイトまで)<br>
+        &nbsp;&nbsp; <h4>詳細検索ボタン</h4><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;- メッセージを検索することが出来ます。<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;- 検索条件は、入力した値が[タイトル・本文・コメント・送信者]に含まれるメッセージが表示されます<br>
+        &nbsp;&nbsp; <h4>送信メッセージ一覧</h4><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;- ご自身が送信したメッセージ一覧が表示されます。<br>
+      </p>
+    </div>
+    <div id="tab4">
+      <p><strong>04</strong></p>
+      <p>
+        <h2>帳票管理機能使い方</h2><br>
+        &nbsp;<h3>用途</h3>
+        &nbsp;&nbsp;機械図面や、作業マニュアルの変更に際し、既存の管理方法の場合下記問題点がある場合に有用です。<br>
+        &nbsp;&nbsp;[改定履歴が分からない、どのファイルが最新版か分からない、<br>
+        &nbsp;&nbsp;データの保管場所が決まっておらず検索に時間がかかるetc..]<br>
+        &nbsp;<h3>使用の流れ</h3>
+        &nbsp;&nbsp; <h4>①ページ上部ナビバーの帳票管理ボタンを押す</h4><br>
+        &nbsp;&nbsp; <h4>②マスター登録ボタンを押す</h4><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;- 帳票名+帳票データを添付しましょう(添付は１ファイルのみです)<br>
+        &nbsp;&nbsp; <h4>③登録する</h4><br>
+        &nbsp;<h3>以降帳票更新時</h3><br>
+        &nbsp;&nbsp; <h4>①更新したい帳票の更新ボタンを押す</h4><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;- 改定符号+改定理由+改定した帳票データを添付しましょう<br>
+        &nbsp;&nbsp; <h4>②登録する</h4><br>
+        &nbsp;<h3>データのダウンロード方法に関して</h3><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;- 帳票一覧から最新版データのアイコンをクリックしてダウンロードできます。<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;- 過去のデータは帳票一覧より確認したい項目名をクリックすると、<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 過去のデータを閲覧することが出来ます。<br>
+      </p>
+    </div>
+    <div id="tab5">
+      <p><strong>05</strong></p>
+      <p>
+        <h2>伝票照合機能</h2><br>
+        &nbsp;<h3>前提</h3>
+        &nbsp;&nbsp;QRコード付きのお客さんの伝票があり社内の製品に、QRコードが付いている場合を想定しています。<br>
+        &nbsp;&nbsp; <h4>使用方法</h4><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;- QRコードリーダをお使いのPCに接続します(ラズベリーパイなど小型のPCがより作業性が確保されます)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;伝票照合画面を開き、顧客のの伝票と社内製品のQRコードを読み取ります(順不同)<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;片方のQRコードにもう片方のQRコードの情報が含まれている場合正解音がなります。<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;QRコードの情報が同一または含まれていない場合、不正解音が鳴ります。<br>
+        &nbsp;&nbsp; <h4>仕様</h4><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;- データ1の入力フィールドでEnterが押されると、データ2の入力フィールドにフォーカスが移ります<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データ2の入力フィールドでEnterが押されると、データ1,2の値が照合されます<br>
       </p>
     </div>
   </div>

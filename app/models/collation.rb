@@ -1,0 +1,2 @@
+class Collation < ApplicationRecord
+end

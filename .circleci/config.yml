@@ -27,7 +27,6 @@ jobs:
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
-            # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
       - run:
           name: install bundle
@@ -57,12 +56,12 @@ jobs:
     steps:
       - checkout
       - run:
-          name: bundle のｾｯﾄｱｯﾌﾟ
+          name: bundle のｾｯﾄｱｯﾌﾟ bundler2系に対応
           command: |
             sudo gem update --system
             sudo gem uninstall bundler
             sudo rm /usr/local/bin/bundle
-            #sudo rm /usr/local/bin/bundler
+            sudo rm /usr/local/bin/bundler
             sudo gem install bundler
       - run:
           name: bundle install

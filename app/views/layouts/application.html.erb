@@ -10,7 +10,6 @@
   </head>
 
   <body>
-  <!--- div class='main_image' --->
   <%if @current_user then%>
 		<nav>
 		<div class="cp_navi">
@@ -26,20 +25,34 @@
 					</div>
 				</li>
 					<li><a href="#"><%= link_to 'メッセージ', messages_path %></a></li>
+				<li>
+					<a href="#">伝票照合 <span class="caret"></span></a>
+					<div>
+						<ul>
+							<li><%= link_to '照合', new_collation_path %></li>
+							<li><%= link_to '一覧', collations_path %></li>
+							<li><%= link_to 'QRコード生成', new_encoders_path%></li>
+						</ul>
+					</div>
+				</li>
+					<li><%= link_to '帳票管理', parentforms_path %></li>
 					<li><%= link_to 'サインアウト', logout_path, method: :delete %></li>
+					<a>名前:<%= current_user.name %><a>
 			</ul>
 		</div>
 		<!--- フローティングメニュー --->
 		<nav class='floating_nav'>
-		<p class='floating_menue'>メニュー</p>
+		<span class='floating_menue'>メニュー</span>
 		<ul class='floating'>
-			<li><%= link_to 'Home', root_path %></li>
+			<%= link_to 'Home', root_path %>
 			<li>
 				<a class='parent_floating_nav_user'>ユーザ管理</a>
 				<div class = 'child_floating_nav_user'>
 					<ul>
-						<li><%= link_to '一覧', users_path %></li>
-						<li><%= link_to '登録', new_user_path %></li>
+						<%= link_to '一覧', users_path %>
+						<% if current_user.admin? %>
+							<%= link_to '登録', new_user_path %>
+						<%end%>
 					</ul>
 				</div>	
 			</li>
@@ -47,12 +60,12 @@
 				<a class='parent_floating_nav_message'>メッセージ</a>
 				<div class = 'child_floating_nav_message'>
 					<ul>
-						<li><%= link_to 'メッセージ一覧', messages_path %></li>
-						<li><%= link_to 'メッセージ送信', new_message_path %></li>
+						<%= link_to 'メッセージ一覧', messages_path %>
+						<%= link_to 'メッセージ送信', new_message_path %>
 					</ul>
 				</div>	
 			</li>
-			<li><%= link_to 'サインアウト', logout_path, method: :delete %></li>
+			<%= link_to 'サインアウト', logout_path, method: :delete %>
 		</ul>
 		</nav>
 	<%end%>
@@ -163,7 +176,7 @@
 	color:#635F5F;
 }
 
-/*ナビゲーションバー　　 https://copypet.jp/671/ */
+/*ナビゲーションバーhttps://copypet.jp/671/ */
 .cp_navi {
 	background-color: #ffffff;
 	border: 1px solid #dedede;
@@ -266,12 +279,9 @@
 	
 
 .star_in{
-  border: solid 2px #4b0723;
 	display: inline-block;
   padding: 0.3em 0.3em;
   text-decoration: none;
   color: #4b0723;
-  border-radius: 3px;
-  transition: .4s;
 }
 </style>

@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+  resources :parentforms, only: [:create,:new,:index,:show,:destroy] do
+    resources :childforms, only: [:new,:create,:destroy,:edit,:update]
+  end
+  resources :collations
+  resource :encoders, only: [:create,:new]
+  post 'encoders/new', to: 'encoders#new'
 
-  get 'stars/create'
-  get 'stars/destroy'
-  #users_controller ﾙｰﾃｨﾝｸﾞ
   root to: 'home#new' 
-  #users_controller ﾙｰﾃｨﾝｸﾞ
+  get '/about', to: 'home#about'
   resources :users   
   
   get '/login', to: 'session#new'
@@ -17,8 +20,8 @@ Rails.application.routes.draw do
 
   #多対多のｱｿｼｴｰｼｮﾝ
   resources :messages do
-    resource :stars, onlt: [:create,:destroy]
-    resource :comments, onry: [:create,:destroy,:new]
+    resource :stars, only: [:create,:destroy]
+    resource :comments, only: [:create,:destroy,:new]
   end
 
   get '/messages_sent', to: 'messages#index_sent'

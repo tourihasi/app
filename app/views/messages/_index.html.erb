@@ -12,16 +12,20 @@
   </thead>
 
   <% i = 0 %>
-  <% @messages.each do |message| %>
+  <% @messages.each do |message| %>　　　　　　　　　　　
     <tbody>
       <tr>
-        <!--- お気に入り機能 --->
-        <% if message.star_by?(current_user) %> <!--- カレントユーザがお気に入りしていたら --->
-          <td><%= link_to '', message_stars_path(message.id),class: 'btn star_out', method: :delete %></td>
-        <%else%>
-          <td><%= link_to '', message_stars_path(message.id),class: 'btn star_in', method: :post%></td>
-        <%end%>
-        
+        <td>
+          <% if message.star_by?(current_user) %>
+            <%= link_to message_stars_path(message.id), method: :delete do%>
+              <%= fa_icon 'check', class: "btn-star star_out" %>
+            <%end%>
+          <%else%>
+            <%= link_to message_stars_path(message.id), method: :post do%>
+              <%= fa_icon 'square-o', class: "btn-star star_in" %>
+            <%end%>
+          <%end%>
+        </td>
         <td><%= i += 1  %></td>
         <% if message.title == "" %>
           <td><%=link_to 'タイトルなし', message_path(message.id)%></td>
